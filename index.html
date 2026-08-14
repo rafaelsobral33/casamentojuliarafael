@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rafael & Julia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #7A6855;
+      --secondary-color: #A39171;
+      --bg-light: #FAFAFA;
+      --card-bg: #FFFFFF;
+      --text-dark: #333333;
+      --text-muted: #666666;
+      --accent: #8C2D19;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+    h1, h2, h3, .brand { font-family: 'Cormorant Garamond', serif; }
+
+    /* Navegação */
+    header { background: #fff; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+    .brand { font-size: 1.8rem; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+    nav { display: flex; align-items: center; }
+    nav a { margin-left: 20px; text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.95rem; transition: color 0.3s; cursor: pointer; }
+    nav a:hover { color: var(--primary-color); }
+
+    /* Layout da Página */
+    .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+    .section { margin-bottom: 60px; text-align: center; }
+    .section-title { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+
+    /* Carrossel de Fotos */
+    .carousel-container { position: relative; width: 100%; margin: 20px 0; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }    
+    .carousel-slides { display: flex; transition: transform 0.5s ease-in-out; }
+    .carousel-slide { min-width: 100%; box-sizing: border-box; }
+    .carousel-slide img { width: 100%; height: 450px; object-fit: cover; display: block; }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; font-size: 2rem; padding: 10px 15px; cursor: pointer; border-radius: 50%; }
+    .carousel-btn.prev { left: 15px; }
+    .carousel-btn.next { right: 15px; }
+
+    /* Caixas de Texto / Estilo da Festa e Vestimenta */
+    .info-card { background: var(--card-bg); padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: left; margin: 20px 0; }
+    .rules-list { list-style-type: none; margin-top: 15px; }
+    .rules-list li { padding: 10px 0; border-bottom: 1px dashed #eee; font-size: 0.95rem; }
+
+    /* Formulários */
+    .form-group { margin-bottom: 20px; text-align: left; }
+    label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark); }
+    input[type="text"], input[type="email"], select, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: inherit; }
+    button.btn-primary { background: var(--primary-color); color: #fff; padding: 14px 28px; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; transition: background 0.3s; width: 100%; font-weight: 600; }
+    button.btn-primary:hover { background: var(--secondary-color); }
+
+    /* Vitrine de Presentes */
+    .gift-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; margin-top: 30px; }
+    .gift-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; padding: 15px; display: flex; flex-direction: column; height: 100%; }
+    .gift-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .gift-actions { margin-top: 15px; display: flex; align-items: center; justify-content: center; min-height: 48px; }
+    .gift-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; }
+    .gift-card h4 { font-size: 1.2rem; margin: 15px 0 5px; color: var(--primary-color); }
+    .gift-card .price { font-size: 1.1rem; font-weight: bold; color: var(--text-dark); margin-bottom: 15px; }
+
+    /* Controles de Quantidade */
+    .qty-controls { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: auto; }
+    .qty-btn { background: var(--primary-color); color: white; border: none; border-radius: 50%; width: 35px; height: 35px; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s;}
+    .qty-btn:hover { background: var(--secondary-color); }
+
+    /* Carrinho & Checkout Modal */
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; }
+    .modal-content { background: #fff; padding: 30px; border-radius: 8px; max-width: 550px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; }
+    .modal-close { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; border: none; background: none; }
+    
+    .hidden { display: none !important; }
+
+    /* =========================================
+       AJUSTES PARA CELULAR (RESPONSIVIDADE)
+       ========================================= */
+    @media (max-width: 768px) {
+      /* Ajusta o cabeçalho para colocar a logo em cima e os links embaixo */
+      .nav-container { 
+        flex-direction: column; 
+        gap: 15px; 
+        padding: 15px 10px;
+      }
+      
+      /* Permite que os links do menu quebrem de linha se não couberem */
+      nav { 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 12px; 
+      }
+      
+      nav a { 
+        margin-left: 0; /* Remove a margem lateral que empurrava os links no PC */
+        font-size: 0.85rem; 
+      }
+
+      /* Diminui um pouco o tamanho dos títulos para caber na tela */
+      .section-title { 
+        font-size: 2rem; 
+      }
+
+      /* Diminui a altura das fotos do carrossel para não ocupar a tela inteira */
+      .carousel-slide img { 
+        height: 300px; 
+      }
+
+      /* Reduz os espaços laterais da página */
+      .container { 
+        padding: 30px 15px; 
+      }
+
+      /* Ajusta a caixa de texto para não ficar tão larga */
+      .info-card { 
+        padding: 20px; 
+      }
+
+      /* Garante que o menu do carrinho não vaze para fora da tela do celular */
+      #cartDropdown { 
+        right: -50px; 
+        width: 280px; 
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand" onclick="showView('home', true)">R & J</a>
+      <nav>
+        <a onclick="showView('home', true)" style="color: var(--accent); font-weight: 600;">Home</a>
+        
+        <a onclick="showView('home'); scrollToSection('casal')">O Casal</a>
+        <a onclick="showView('home'); scrollToSection('local')">O Local</a>
+        <a onclick="showView('home'); scrollToSection('festa')">A Festa</a>
+        <a onclick="showView('home'); scrollToSection('vestimenta')">Vestimenta</a>
+        <a onclick="showView('home'); scrollToSection('rsvp')">RSVP</a>
+        <a onclick="showView('gifts')" style="color: var(--accent); font-weight: 600;">Lista de Presentes</a>
+        <div id="navCart" class="hidden" style="position: relative; margin-left: 20px;">
+          <button onclick="toggleCartDropdown(event)" style="background:none; border:none; font-size: 1.2rem; cursor:pointer; font-weight: bold; padding: 5px;">
+            🛒 <span id="cartBadge" style="background: var(--accent); color: white; border-radius: 50%; padding: 2px 8px; font-size: 0.8rem; position: relative; top: -2px;">0</span>
+          </button>
+          
+          <div id="cartDropdown" class="hidden" style="position: absolute; right: 0; top: 120%; background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.15); width: 300px; padding: 15px; border-radius: 8px; z-index: 200; border: 1px solid #eaeaea;">
+            <h4 style="margin-bottom: 15px; color: var(--primary-color);">Seu Carrinho</h4>
+            <div id="dropdownCartList" style="max-height: 250px; overflow-y: auto; margin-bottom: 10px;">
+              </div>
+            <hr style="margin: 10px 0; border: 0; border-top: 1px dashed #ccc;">
+            <div style="font-weight: bold; margin-bottom: 15px; text-align: right; font-size: 1.1rem;">
+              Total: R$ <span id="dropdownTotal">0</span>,00
+            </div>
+            <button class="btn-primary" onclick="openCheckoutModal()" style="padding: 12px; font-size: 0.9rem;">Finalizar Presente</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div id="view-home" class="container">
+    
+  <section class="section">
+      <img src="img/header.jpg" alt="Capa" style="width: 100vw; height: 100vh; object-fit: cover; position: relative; left: 50%; transform: translateX(-50%); margin-top: -40px; margin-bottom: 40px; display: block;">
+      
+      <h1 class="section-title">Rafael & Julia</h1>
+      <p style="font-size: 1.2rem; color: var(--text-muted);">28 de Novembro de 2026 • São Paulo / SP</p>
+    </section>
+
+    <section id="casal" class="section">
+      <h2 class="section-title">O Casal</h2>
+      <p style="max-width: 700px; margin: 0 auto 20px;"> 
+        A vida é divertida e o destino é inexorável. Depois de tantos anos estudando contemporaneamente na Escola Politécnica, esses dois se encontraram em Milão. Desde então, são mais de 5 anos juntos, muitas viagens e histórias pra contar!
+      </p>
+      
+      <div class="carousel-container">
+        <div class="carousel-slides" id="carouselSlides">
+          <div class="carousel-slide"><img src="img/foto1.jpg" alt="Foto 1"></div>
+          <div class="carousel-slide"><img src="img/foto2.jpg" alt="Foto 2"></div>
+          <div class="carousel-slide"><img src="img/foto3.jpg" alt="Foto 3"></div>
+          <div class="carousel-slide"><img src="img/foto4.jpg" alt="Foto 4"></div>
+          <div class="carousel-slide"><img src="img/foto5.jpg" alt="Foto 5"></div>
+          <div class="carousel-slide"><img src="img/foto6.jpg" alt="Foto 6"></div>
+          <div class="carousel-slide"><img src="img/foto7.jpg" alt="Foto 7"></div>
+          <div class="carousel-slide"><img src="img/foto8.jpg" alt="Foto 8"></div>
+          <div class="carousel-slide"><img src="img/foto9.jpg" alt="Foto 9"></div>
+          <div class="carousel-slide"><img src="img/foto10.jpg" alt="Foto 10"></div>
+          <div class="carousel-slide"><img src="img/foto11.jpg" alt="Foto 11"></div>
+          <div class="carousel-slide"><img src="img/foto12.jpg" alt="Foto 12"></div>
+          <div class="carousel-slide"><img src="img/foto13.jpg" alt="Foto 13"></div>
+          <div class="carousel-slide"><img src="img/foto14.jpg" alt="Foto 14"></div>
+          <div class="carousel-slide"><img src="img/foto15.jpg" alt="Foto 15"></div>
+          <div class="carousel-slide"><img src="img/foto16.jpg" alt="Foto 16"></div>
+          <div class="carousel-slide"><img src="img/foto17.jpg" alt="Foto 17"></div>
+          <div class="carousel-slide"><img src="img/foto18.jpg" alt="Foto 18"></div>
+          <div class="carousel-slide"><img src="img/foto19.jpg" alt="Foto 19"></div>
+          <div class="carousel-slide"><img src="img/foto20.jpg" alt="Foto 20"></div>
+        </div>
+        <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+        <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
+      </div>
+    </section>
+
+    <section id="local" class="section">
+      <h2 class="section-title">O Local</h2>
+      <img src="img/local.png" alt="Foto do Local" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; margin-top: 25px; display: block;">  
+      <div class="info-card">
+        <p><strong>Data:</strong> 28 de Novembro de 2026</p>
+        <p><strong>Local:</strong> Andar43 - Praça Pedro Lessa 110 - São Paulo-SP</p>
+        <p><strong>Entrada:</strong> Ao entrar no prédio, será exigida documentação para identificação dos convidados.</p>
+        <p style="margin-top: 10px;">
+          <a href="https://maps.google.com" target="_blank" style="color: var(--primary-color); text-decoration: underline;">Ver no Google Maps</a>
+        </p>
+        
+        <h4 style="margin-top: 20px; color: var(--primary-color);">Como Chegar</h4>
+        <ul class="rules-list">
+          <li>• <strong>Estacionamento:</strong> Há um estacionamento privado aberto 24h na rua Brigadeiro Tobias 120, colado ao prédio.</li>
+          <li>• <strong>Uber:</strong> É a nossa recomendação principal, assim todos podemos aproveitar a festa sem preocupação.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="festa" class="section">
+      <h2 class="section-title">A Festa</h2>
+      <div class="info-card">
+        <p style="margin-bottom: 20px;">
+          O evento será despojado e focado no que mais importa: comemorar com nossos amigos! Não haverá um jantar tradicional ou lugares marcados. Não haverá nem mesmo mesa pra sentar! A ideia é circular, curtir música boa e aproveitar os drinks e as pizzas servidas à vontade.
+        </p>
+
+        <h4 style="color: var(--primary-color);">Cronograma</h4>
+        <ul class="rules-list">
+          <li>• <strong>16h30:</strong> Recepção e chegada dos convidados</li>
+          <li>• <strong>17h00:</strong> Abertura do bar</li>
+          <li>• <strong>17h50:</strong> Pôr do sol</li>
+          <li>• <strong>18h30:</strong> Discurso do(s) noivo(s)</li>
+          <li>• <strong>22h00:</strong> Fim de festa</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="vestimenta" class="section">
+      <h2 class="section-title">Vestimenta</h2>
+      <div class="info-card">
+        <p style="margin-bottom: 20px;">
+          A ideia do evento é todo mundo estar confortável. Então no fim do dia, vá vestido como preferir! Abaixo temos algumas sugestões somente. 
+        </p>
+        <p><strong>Traje: Esporte Fino</strong></p>
+        <ul class="rules-list">
+          <li>• Evitar paletó, porque não tem muitas cadeiras onde o apoiar e vai estar calor no dia</li>
+          <li>• Salto alto liberado, mas de preferência só se você tiver menos de 1,60m pra noiva se sentir alta</li>
+          <li>• Evitar camisas de time, pro noivo não ficar com inveja</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="rsvp" class="section">
+      <h2 class="section-title">Confirme sua Presença</h2>
+      <div class="info-card">
+        <form id="rsvpForm" onsubmit="submitRSVP(event)">
+          
+          <div class="form-group">
+            <label for="rsvpName">Nome Completo:</label>
+            <input type="text" id="rsvpName" required placeholder="Insira seu nome aqui">
+          </div>
+
+          <div class="form-group">
+            <label for="rsvpDoc">RG ou CPF (Necessário para entrada no local):</label>
+            <input type="text" id="rsvpDoc" required placeholder="Digite o número do seu documento">
+          </div>
+
+          <div class="form-group">
+            <label for="rsvpDiet">Restrições Alimentares (Alergias, Vegetariano/Vegano):</label>
+            <input type="text" id="rsvpDiet" placeholder="Ex: Intolerante a lactose, vegetariano, etc.">
+          </div>
+
+          <div id="partnerConfirmation" class="form-group hidden">
+            <label id="partnerConfirmationLabel" style="color: var(--primary-color);">Você levará seu acompanhante?</label>
+            <div style="margin-top: 8px;">
+              <label style="display: inline; margin-right: 15px; font-weight: normal; cursor: pointer;">
+                <input type="radio" name="partnerAttending" value="sim" onchange="togglePartnerFields(this.value)"> Sim
+              </label>
+              <label style="display: inline; font-weight: normal; cursor: pointer;">
+                <input type="radio" name="partnerAttending" value="nao" onchange="togglePartnerFields(this.value)"> Não
+              </label>
+            </div>
+          </div>
+
+          <div id="partnerFields" class="hidden">
+            <div class="form-group">
+              <label for="partnerName">Nome Completo do Acompanhante:</label>
+              <input type="text" id="partnerName" placeholder="Nome completo do acompanhante">
+            </div>
+            <div class="form-group">
+              <label for="partnerDoc">RG ou CPF do Acompanhante:</label>
+              <input type="text" id="partnerDoc" placeholder="Documento do acompanhante">
+            </div>
+            <div class="form-group">
+              <label for="partnerDiet">Restrições Alimentares do Acompanhante:</label>
+              <input type="text" id="partnerDiet" placeholder="Ex: Sem glúten">
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary">Confirmar Presença</button>
+        </form>
+      </div>
+    </section>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <button class="btn-primary" onclick="showView('gifts')" style="max-width: 350px; background: var(--accent);">
+        Ir para a Lista de Presentes 🎁
+      </button>
+    </div>
+  </div>
+
+  <div id="view-gifts" class="container hidden">
+    <section class="section">
+      <h1 class="section-title">Lista de Presentes</h1>
+      <p style="margin-bottom: 20px;">Poder festejar com vocês é o que mais queremos de presente! Mas se fizer questão de nos presentear, adicione ao seu carrinho os itens que gostarem mais que ficaremos muito gratos pelo carinho!</p>
+      <div class="gift-grid" id="giftGrid">
+        </div>
+    </section>
+  </div>
+
+  <div id="rsvpModal" class="modal-overlay">
+    <div class="modal-content">
+      <h2 style="color: var(--primary-color); margin-bottom: 15px;">Presença Confirmada!</h2>
+      <p id="rsvpModalMsg" style="margin-bottom: 20px;">Obrigado por confirmar sua presença. Mal podemos esperar para comemorar com você!</p>
+      <button class="btn-primary" onclick="closeModal('rsvpModal')">Fechar</button>
+      <button class="btn-primary" onclick="closeModal('rsvpModal'); showView('gifts');" style="margin-top: 10px; background: var(--accent);">Ver Lista de Presentes</button>
+    </div>
+  </div>
+
+  <div id="checkoutModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('checkoutModal')">×</button>
+      <h2 style="color: var(--primary-color); margin-bottom: 15px;">Finalizar Presente</h2>
+      
+      <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 20px; text-align: center;">Total a pagar: R$ <span id="checkoutTotal">0</span>,00</p>
+      <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;">
+
+      <form id="giftCheckoutForm" onsubmit="submitGiftCheckout(event)">
+        <h3 style="margin-bottom: 10px;">Pagamento via Pix</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">
+          Faça a transferência Pix no valor correspondente e preencha seus dados abaixo para enviar sua mensagem aos noivos:
+        </p>
+
+        <div style="text-align: center; margin-bottom: 15px; padding: 15px; background: #f9f9f9; border-radius: 8px;">
+          <img src="https://via.placeholder.com/180x180/000000/FFFFFF?text=QR+Code+Pix" alt="QR Code Pix" style="border: 1px solid #ddd; padding: 5px; margin-bottom: 10px;">
+          
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <p style="font-size: 0.9rem; margin: 0;">Chave Pix (E-mail): <strong id="pixKey">exemplo@noivos.com</strong></p>
+            <button type="button" id="copyPixBtn" onclick="copyPix()" style="background: var(--secondary-color); color: white; border: none; padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; transition: 0.3s;">
+              Copiar Chave
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="giftGuestName">Seu Nome Completo:</label>
+          <input type="text" id="giftGuestName" required placeholder="Como deseja assinar o cartão">
+        </div>
+
+        <div class="form-group">
+          <label for="giftGuestEmail">Seu E-mail (Para receber a confirmação):</label>
+          <input type="email" id="giftGuestEmail" required placeholder="seuemail@exemplo.com">
+        </div>
+
+        <div class="form-group">
+          <label for="giftMessage">Mensagem de Carinho para os Noivos:</label>
+          <textarea id="giftMessage" rows="3" required placeholder="Escreva uma mensagem especial..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">Confirmar Envio do Presente</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // URL DO SEU GOOGLE APPS SCRIPT
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwhPFNFg-J815t8D_SX4xoUBhZ7kuruvo_vJlvxPVVeebKXWDMoL-Lqvg7dRWug4lUo/exec";
+
+    // Dados dos Presentes
+    const gifts = [
+      { id: 1, title: "Se eu não comprar nada,\no desconto é maior", price: 1, img: "img/presentes/julius.jpg" },
+      { id: 2, title: "1 mês de Geoguessr pro noivo", price: 10, img: "img/presentes/geoguessr.jpg" },
+      { id: 3, title: "Camisa da Lusa pra noiva", price: 80, img: "img/presentes/camisalusa.jpg" },
+      { id: 4, title: "Tapete de Yoga pra noiva", price: 120, img: "img/presentes/tapeteyoga.jpg" },
+      { id: 5, title: "Papete da noiva", price: 50, img: "img/presentes/papete.jpg" },
+      { id: 6, title: "Fone anti-ruído pra Julia ignorar o Sobral", price: 30, img: "img/presentes/fone.jpg" },
+      { id: 7, title: "Expansão de Ticket to Ride", price: 80, img: "img/presentes/tickettoride.jpg" },
+      { id: 8, title: "1 ano de corte de cabelo e barba pro Sobral", price: 40, img: "img/presentes/corte.jpg" },
+      { id: 9, title: "Aula de potinho pra Julia", price: 50, img: "img/presentes/potinho.jpg" },
+      { id: 10, title: "Ingresso das Paralimpíadas 2028", price: 120, img: "img/presentes/la28.png" }
+    ];
+
+    // Carrinho refatorado para objeto (id do presente -> quantidade)
+    let cart = {};
+
+    // Variável para controlar quando rolar suave ou ir direto
+    let mudouDeAba = false;
+
+    // Alternar entre visões (Home vs Presentes)
+    function showView(viewName, isHomeButton = false) {
+      if(viewName === 'home') {
+        const jaEstavaNaHome = !document.getElementById('view-home').classList.contains('hidden');
+        mudouDeAba = !jaEstavaNaHome;
+
+        document.getElementById('view-home').classList.remove('hidden');
+        document.getElementById('view-gifts').classList.add('hidden');
+        document.getElementById('navCart').classList.add('hidden'); 
+        
+        // Só rola para o topo se a pessoa clicou explicitamente na logo ou no botão "Home"
+        if (isHomeButton) {
+          window.scrollTo({
+            top: 0,
+            behavior: mudouDeAba ? "instant" : "smooth"
+          });
+          mudouDeAba = false; // Reseta após o uso
+        }
+      } else {
+        document.getElementById('view-home').classList.add('hidden');
+        document.getElementById('view-gifts').classList.remove('hidden');
+        document.getElementById('navCart').classList.remove('hidden'); 
+        renderGifts();
+        updateCartUI();
+        window.scrollTo(0,0);
+      }
+    }
+
+    // Rolar para a seção
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if(el) {
+        const alturaCabecalho = 80; 
+        
+        // Calcular e rolar instantaneamente, sem setTimeout,
+        // força o navegador a fazer o salto antes de desenhar a tela.
+        const posicaoElemento = el.getBoundingClientRect().top;
+        const posicaoFinal = posicaoElemento + window.scrollY - alturaCabecalho;
+    
+        window.scrollTo({
+          top: posicaoFinal,
+          behavior: mudouDeAba ? "instant" : "smooth"
+        });
+        
+        mudouDeAba = false; // Reseta a flag para as próximas navegações
+      }
+    }
+
+    // Lógica do Slider com Auto-play de 3 segundos
+    let currentSlide = 0;
+    let slideInterval;
+
+    function moveSlide(direction) {
+      const slides = document.querySelectorAll('.carousel-slide');
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      document.getElementById('carouselSlides').style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      // Reseta o temporizador se o usuário clicar manualmente nas setas
+      resetAutoSlide();
+    }
+
+    function startAutoSlide() {
+      slideInterval = setInterval(() => {
+        const slides = document.querySelectorAll('.carousel-slide');
+        currentSlide = (currentSlide + 1) % slides.length;
+        document.getElementById('carouselSlides').style.transform = `translateX(-${currentSlide * 100}%)`;
+      }, 3000);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(slideInterval);
+      startAutoSlide();
+    }
+
+    // Inicia a passagem automática assim que a página carrega
+    startAutoSlide();
+
+    // Mostrar/Ocultar campos de Acompanhante no RSVP
+    function togglePartnerFields(value) {
+      const fields = document.getElementById('partnerFields');
+      const partnerName = document.getElementById('partnerName');
+      const partnerDoc = document.getElementById('partnerDoc');
+      
+      if (value === 'sim') {
+        fields.classList.remove('hidden');
+        // Torna os campos de nome e documento do acompanhante obrigatórios
+        partnerName.setAttribute('required', 'required');
+        partnerDoc.setAttribute('required', 'required');
+      } else {
+        fields.classList.add('hidden');
+        // Remove a obrigatoriedade se o acompanhante não for
+        partnerName.removeAttribute('required');
+        partnerDoc.removeAttribute('required');
+        
+        // Limpa os valores caso a pessoa mude de ideia e clique em "Não"
+        partnerName.value = '';
+        partnerDoc.value = '';
+        document.getElementById('partnerDiet').value = '';
+      }
+    }
+    
+    // Submeter RSVP
+    function submitRSVP(e) {
+      e.preventDefault();
+      
+      // Agora verificamos se o formulário do acompanhante está visível na tela
+      const partnerFields = document.getElementById('partnerFields');
+      const hasPartner = !partnerFields.classList.contains('hidden');
+      
+      const payload = {
+        action: 'save_rsvp',
+        nome: document.getElementById('rsvpName').value,
+        documento: document.getElementById('rsvpDoc').value,
+        restricoes: document.getElementById('rsvpDiet').value,
+        temAcompanhante: hasPartner,
+        nomeAcompanhante: hasPartner ? document.getElementById('partnerName').value : '',
+        docAcompanhante: hasPartner ? document.getElementById('partnerDoc').value : '',
+        restricoesAcompanhante: hasPartner ? document.getElementById('partnerDiet').value : '',
+        confirmado: true
+      };
+
+      if (APPS_SCRIPT_URL !== "SEU_URL_DO_APPS_SCRIPT_AQUI") {
+        fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8' 
+          },
+          body: JSON.stringify(payload)
+        }).catch(err => console.error(err));
+      }
+
+      document.getElementById('rsvpModalMsg').innerText = `Obrigado, ${payload.nome}! Sua presença foi confirmada com sucesso.`;
+      document.getElementById('rsvpModal').style.display = 'flex';
+      
+      // Reseta o form e esconde a seção de acompanhante por precaução
+      document.getElementById('rsvpForm').reset();
+      partnerFields.classList.add('hidden');
+    }
+
+    // ---------- LÓGICA DO CARRINHO ---------- //
+
+    function renderGifts() {
+      const grid = document.getElementById('giftGrid');
+      grid.innerHTML = gifts.map(g => {
+        const qty = cart[g.id] || 0;
+        
+        let actionsHtml = '';
+        if (qty === 0) {
+          actionsHtml = `<button class="btn-primary" onclick="addToCart(${g.id})">Adicionar Presente</button>`;
+        } else {
+          actionsHtml = `
+            <div class="qty-controls" style="margin-top: 0;">
+              <button class="qty-btn" onclick="removeFromCart(${g.id})">-</button>
+              <span style="font-weight: bold; font-size: 1.2rem; min-width: 20px; display: inline-block;">${qty}</span>
+              <button class="qty-btn" onclick="addToCart(${g.id})">+</button>
+            </div>
+          `;
+        }
+
+        return `
+          <div class="gift-card">
+            <img src="${g.img}" alt="${g.title}">
+            <div class="gift-info">
+              <h4>${g.title}</h4>
+              <div class="price">R$ ${g.price},00</div>
+            </div>
+            <div class="gift-actions">
+              ${actionsHtml}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function addToCart(giftId) {
+      if (!cart[giftId]) cart[giftId] = 0;
+      cart[giftId]++;
+      updateCartUI();
+    }
+
+    function removeFromCart(giftId) {
+      if (cart[giftId]) {
+        cart[giftId]--;
+        if (cart[giftId] === 0) {
+          delete cart[giftId];
+        }
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      let totalItems = 0;
+      let totalPrice = 0;
+      let dropdownHtml = '';
+
+      for (const id in cart) {
+        const qty = cart[id];
+        const gift = gifts.find(g => g.id == id);
+        
+        totalItems += qty;
+        totalPrice += (gift.price * qty);
+
+        dropdownHtml += `
+          <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size: 0.9rem; align-items: center;">
+            <span style="flex: 1; text-align: left; padding-right: 10px;"><strong>${qty}x</strong> ${gift.title}</span>
+            <span style="font-weight: 600;">R$ ${gift.price * qty},00</span>
+          </div>
+        `;
+      }
+
+      // Atualiza Badges (bolinhas de número)
+      document.getElementById('cartBadge').innerText = totalItems;
+      document.getElementById('dropdownTotal').innerText = totalPrice;
+      document.getElementById('checkoutTotal').innerText = totalPrice;
+
+      if (totalItems === 0) {
+        dropdownHtml = '<p style="text-align:center; color: #999; font-size: 0.9rem;">Seu carrinho está vazio.</p>';
+      }
+      
+      document.getElementById('dropdownCartList').innerHTML = dropdownHtml;
+
+      // Re-renderiza a vitrine para exibir os novos botões +/-
+      renderGifts();
+    }
+
+    // DROPDOWN (Menu do carrinho)
+    function toggleCartDropdown(e) {
+      e.stopPropagation(); // Evita que o clique feche imediatamente pelo event listener abaixo
+      document.getElementById('cartDropdown').classList.toggle('hidden');
+    }
+
+    // Fecha o carrinho se clicar em qualquer outro lugar do site
+    document.addEventListener('click', function(e) {
+      const dropdown = document.getElementById('cartDropdown');
+      const navCart = document.getElementById('navCart');
+      if (!navCart.contains(e.target)) {
+        dropdown.classList.add('hidden');
+      }
+    });
+
+    // CHECKOUT / PAGAMENTO PIX
+    function openCheckoutModal() {
+      if (Object.keys(cart).length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+      }
+      document.getElementById('cartDropdown').classList.add('hidden'); // Fecha dropdown
+      document.getElementById('checkoutModal').style.display = 'flex';
+    }
+
+    function copyPix() {
+      const pixKey = document.getElementById('pixKey').innerText;
+      navigator.clipboard.writeText(pixKey).then(() => {
+        const btn = document.getElementById('copyPixBtn');
+        btn.innerText = "Copiado! ✔";
+        btn.style.background = "#28a745"; // Cor de sucesso verde
+        
+        setTimeout(() => {
+          btn.innerText = "Copiar Chave";
+          btn.style.background = "var(--secondary-color)";
+        }, 2500);
+      }).catch(err => {
+        alert("Erro ao copiar a chave. Por favor, selecione e copie manualmente.");
+      });
+    }
+    
+    // Finalizar Presente (Checkout Pix)
+    function submitGiftCheckout(e) {
+      e.preventDefault();
+      
+      let total = 0;
+      let giftNames = [];
+
+      for (const id in cart) {
+        const qty = cart[id];
+        const gift = gifts.find(g => g.id == id);
+        total += (gift.price * qty);
+        giftNames.push(`${qty}x ${gift.title}`);
+      }
+
+      const payload = {
+        action: 'save_gift',
+        nome: document.getElementById('giftGuestName').value,
+        email: document.getElementById('giftGuestEmail').value,
+        mensagem: document.getElementById('giftMessage').value,
+        itens: giftNames,
+        valorTotal: total
+      };
+
+      if (APPS_SCRIPT_URL !== "SEU_URL_DO_APPS_SCRIPT_AQUI") {
+        fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        }).catch(err => console.error(err));
+      }
+
+      alert("Muito obrigado! O registro do seu presente foi enviado e um e-mail de confirmação foi encaminhado para você.");
+      
+      // Limpa tudo
+      cart = {};
+      updateCartUI();
+      closeModal('checkoutModal');
+      document.getElementById('giftCheckoutForm').reset();
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    // Carregar Lista de Convidados da Planilha ao Abrir a Página
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const guestId = urlParams.get('id');
+
+      // Se houver um ID na URL e a URL do Apps Script estiver configurada
+      if (guestId && APPS_SCRIPT_URL !== "SEU_URL_DO_APPS_SCRIPT_AQUI") {
+        const rsvpInput = document.getElementById('rsvpName');
+        rsvpInput.placeholder = "Carregando seu nome...";
+
+        fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify({
+            action: 'get_guest_by_id',
+            id: guestId
+          })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === 'success' && data.nome) {
+            rsvpInput.value = data.nome;
+            // rsvpInput.readOnly = true; // Descomente para bloquear edição do nome do convidado principal
+            
+            const partnerConfirmation = document.getElementById('partnerConfirmation');
+            const partnerConfirmationLabel = document.getElementById('partnerConfirmationLabel');
+            const partnerNameInput = document.getElementById('partnerName');
+            
+            // Verifica se tem acompanhante na base de dados
+            if (data.acompanhante && data.acompanhante.trim() !== "") {
+              // Exibe a pergunta customizada
+              partnerConfirmation.classList.remove('hidden');
+              partnerConfirmationLabel.innerText = `O(a) acompanhante ${data.acompanhante} irá com você?`;
+              
+              // Garante que o campo de input venha vazio como solicitado
+              partnerNameInput.value = ""; 
+
+              // Garante que o valor precisa ser preenchido
+              document.querySelectorAll('input[name="partnerAttending"]').forEach(radio => radio.required = true);
+            } else {
+              partnerConfirmation.classList.add('hidden');
+
+              // Remove obrigatoriedade de preenchimento
+              document.querySelectorAll('input[name="partnerAttending"]').forEach(radio => radio.required = false);
+            }
+          } else {
+            rsvpInput.placeholder = "Digite seu nome completo";
+          }
+        })
+        .catch(err => {
+          console.error("Erro ao buscar convidado pelo ID:", err);
+          rsvpInput.placeholder = "Digite seu nome completo";
+        });
+      }
+    };
+  </script>
+</body>
+</html>
