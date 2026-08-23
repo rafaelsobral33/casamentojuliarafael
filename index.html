@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rafael & Julia</title>
+  <link rel="icon" type="image/png" href="img/icone.png">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -17,7 +18,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+    body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden}
     h1, h2, h3, .brand { font-family: 'Cormorant Garamond', serif; }
 
     /* Navegação */
@@ -35,9 +36,29 @@
 
     /* Carrossel de Fotos */
     .carousel-container { position: relative; width: 100%; margin: 20px 0; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }    
-    .carousel-slides { display: flex; transition: transform 0.5s ease-in-out; }
-    .carousel-slide { min-width: 100%; box-sizing: border-box; }
-    .carousel-slide img { width: 100%; height: 450px; object-fit: cover; display: block; }
+    .carousel-slides { display: flex; transition: transform 0.5s ease-in-out; }/* Atualize esta linha existente adicionando o position: relative; */
+    .carousel-slide { 
+      min-width: 100%; 
+      box-sizing: border-box; 
+      position: relative; 
+    }
+
+    /* Adicione este novo bloco para estilizar a legenda */
+    .carousel-caption {
+      position: absolute;
+      bottom: 25px; /* Distância da base da imagem */
+      left: 50%;
+      transform: translateX(-50%); /* Centraliza a caixa perfeitamente */
+      background: rgba(0, 0, 0, 0.65); /* Fundo escuro semi-transparente para dar leitura */
+      color: #FFFFFF;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      text-align: center;
+      max-width: 90%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .carousel-slide img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
     .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; font-size: 2rem; padding: 10px 15px; cursor: pointer; border-radius: 50%; }
     .carousel-btn.prev { left: 15px; }
     .carousel-btn.next { right: 15px; }
@@ -59,7 +80,7 @@
     .gift-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; padding: 15px; display: flex; flex-direction: column; height: 100%; }
     .gift-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
     .gift-actions { margin-top: 15px; display: flex; align-items: center; justify-content: center; min-height: 48px; }
-    .gift-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; }
+    .gift-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; }
     .gift-card h4 { font-size: 1.2rem; margin: 15px 0 5px; color: var(--primary-color); }
     .gift-card .price { font-size: 1.1rem; font-weight: bold; color: var(--text-dark); margin-bottom: 15px; }
 
@@ -101,11 +122,6 @@
       /* Diminui um pouco o tamanho dos títulos para caber na tela */
       .section-title { 
         font-size: 2rem; 
-      }
-
-      /* Diminui a altura das fotos do carrossel para não ocupar a tela inteira */
-      .carousel-slide img { 
-        height: 300px; 
       }
 
       /* Reduz os espaços laterais da página */
@@ -177,26 +193,118 @@
       
       <div class="carousel-container">
         <div class="carousel-slides" id="carouselSlides">
-          <div class="carousel-slide"><img src="img/foto1.jpg" alt="Foto 1"></div>
-          <div class="carousel-slide"><img src="img/foto2.jpg" alt="Foto 2"></div>
-          <div class="carousel-slide"><img src="img/foto3.jpg" alt="Foto 3"></div>
-          <div class="carousel-slide"><img src="img/foto4.jpg" alt="Foto 4"></div>
-          <div class="carousel-slide"><img src="img/foto5.jpg" alt="Foto 5"></div>
-          <div class="carousel-slide"><img src="img/foto6.jpg" alt="Foto 6"></div>
-          <div class="carousel-slide"><img src="img/foto7.jpg" alt="Foto 7"></div>
-          <div class="carousel-slide"><img src="img/foto8.jpg" alt="Foto 8"></div>
-          <div class="carousel-slide"><img src="img/foto9.jpg" alt="Foto 9"></div>
-          <div class="carousel-slide"><img src="img/foto10.jpg" alt="Foto 10"></div>
-          <div class="carousel-slide"><img src="img/foto11.jpg" alt="Foto 11"></div>
-          <div class="carousel-slide"><img src="img/foto12.jpg" alt="Foto 12"></div>
-          <div class="carousel-slide"><img src="img/foto13.jpg" alt="Foto 13"></div>
-          <div class="carousel-slide"><img src="img/foto14.jpg" alt="Foto 14"></div>
-          <div class="carousel-slide"><img src="img/foto15.jpg" alt="Foto 15"></div>
-          <div class="carousel-slide"><img src="img/foto16.jpg" alt="Foto 16"></div>
-          <div class="carousel-slide"><img src="img/foto17.jpg" alt="Foto 17"></div>
-          <div class="carousel-slide"><img src="img/foto18.jpg" alt="Foto 18"></div>
-          <div class="carousel-slide"><img src="img/foto19.jpg" alt="Foto 19"></div>
-          <div class="carousel-slide"><img src="img/foto20.jpg" alt="Foto 20"></div>
+          <div class="carousel-slide">
+            <img src="img/1.jpg" alt="Foto 1">
+            <div class="carousel-caption">Novinhos</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/2.jpg" alt="Foto 2">
+            <div class="carousel-caption">Prainha</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/3.jpg" alt="Foto 3">
+            <div class="carousel-caption">Taormina</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/4.jpg" alt="Foto 4">
+            <div class="carousel-caption">Laurea da Juju</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/5.jpg" alt="Foto 5">
+            <div class="carousel-caption">Visita da Juju na Eslovênia</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/6.jpg" alt="Foto 6">
+            <div class="carousel-caption">Marseille</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/7.jpg" alt="Foto 7">
+            <div class="carousel-caption">Corridinha mô</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/8.jpg" alt="Foto 8">
+            <div class="carousel-caption">Nascer do sol</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/9.jpg" alt="Foto 9">
+            <div class="carousel-caption">Trilha</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/10.jpg" alt="Foto 10">
+            <div class="carousel-caption">Pôr do sol</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/11.jpg" alt="Foto 11">
+            <div class="carousel-caption">Lugar favorito dela</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/12.jpg" alt="Foto 12">
+            <div class="carousel-caption">Casinha juntos</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/13.jpg" alt="Foto 13">
+            <div class="carousel-caption">Amor de muitos carnavais</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/14.jpg" alt="Foto 14">
+            <div class="carousel-caption">Olimpíadas hehe</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/15.jpg" alt="Foto 15">
+            <div class="carousel-caption">Amor na cidade do amor</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/16.jpg" alt="Foto 16">
+            <div class="carousel-caption">São Silvestre!</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/17.jpg" alt="Foto 17">
+            <div class="carousel-caption">Pipa</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/18.jpg" alt="Foto 18">
+            <div class="carousel-caption">Buggyzinho</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/19.jpg" alt="Foto 19">
+            <div class="carousel-caption">Chegando nos limites</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/20.jpg" alt="Foto 20">
+            <div class="carousel-caption">Casamento da Gi</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/21.jpg" alt="Foto 21">
+            <div class="carousel-caption">4 anos de namoro</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/22.jpg" alt="Foto 22">
+            <div class="carousel-caption">Viva Curitiba</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/23.jpg" alt="Foto 23">
+            <div class="carousel-caption">Friozinho</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/24.jpg" alt="Foto 24">
+            <div class="carousel-caption">Geiser</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/25.jpg" alt="Foto 25">
+            <div class="carousel-caption">Li Can Ca Bur</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/26.jpg" alt="Foto 26">
+            <div class="carousel-caption">O lugar do pedido hehe</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/27.jpg" alt="Foto 27">
+            <div class="carousel-caption">Fazendo o anel</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/28.jpg" alt="Foto 28">
+            <div class="carousel-caption">Lua de Mel?</div>
+          </div>
         </div>
         <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
         <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
@@ -209,9 +317,9 @@
       <div class="info-card">
         <p><strong>Data:</strong> 28 de Novembro de 2026</p>
         <p><strong>Local:</strong> Andar43 - Praça Pedro Lessa 110 - São Paulo-SP</p>
-        <p><strong>Entrada:</strong> Ao entrar no prédio, será exigida documentação para identificação dos convidados.</p>
+        <p><strong>Entrada:</strong> Na entrada do prédio, é necessário apresentar documentação para identificação dos convidados.</p>
         <p style="margin-top: 10px;">
-          <a href="https://maps.google.com" target="_blank" style="color: var(--primary-color); text-decoration: underline;">Ver no Google Maps</a>
+          <a href="https://www.google.com/maps/place/Andar43+-+espa%C3%A7o+de+evento/data=!4m2!3m1!1s0x0:0xa02644edadaeb63d?sa=X&ved=1t:2428&ictx=111" target="_blank" style="color: var(--primary-color); text-decoration: underline;">Ver no Google Maps</a>
         </p>
         
         <h4 style="margin-top: 20px; color: var(--primary-color);">Como Chegar</h4>
@@ -267,7 +375,7 @@
 
           <div class="form-group">
             <label for="rsvpDoc">RG ou CPF (Necessário para entrada no local):</label>
-            <input type="text" id="rsvpDoc" required placeholder="Digite o número do seu documento">
+            <input type="text" id="rsvpDoc" required placeholder="Digite o número do seu documento" oninput="this.setCustomValidity('')">
           </div>
 
           <div class="form-group">
@@ -294,7 +402,7 @@
             </div>
             <div class="form-group">
               <label for="partnerDoc">RG ou CPF do Acompanhante:</label>
-              <input type="text" id="partnerDoc" placeholder="Documento do acompanhante">
+              <input type="text" id="partnerDoc" placeholder="Documento do acompanhante" oninput="this.setCustomValidity('')">
             </div>
             <div class="form-group">
               <label for="partnerDiet">Restrições Alimentares do Acompanhante:</label>
@@ -385,14 +493,14 @@
     const gifts = [
       { id: 1, title: "Se eu não comprar nada,\no desconto é maior", price: 1, img: "img/presentes/julius.jpg" },
       { id: 2, title: "1 mês de Geoguessr pro noivo", price: 10, img: "img/presentes/geoguessr.jpg" },
-      { id: 3, title: "Camisa da Lusa pra noiva", price: 80, img: "img/presentes/camisalusa.jpg" },
-      { id: 4, title: "Tapete de Yoga pra noiva", price: 120, img: "img/presentes/tapeteyoga.jpg" },
+      { id: 3, title: "Fone anti-ruído pra Julia ignorar o Sobral", price: 30, img: "img/presentes/fone.jpg" },
+      { id: 4, title: "1 ano de corte de cabelo e barba pro Sobral", price: 40, img: "img/presentes/corte.jpg" },
       { id: 5, title: "Papete da noiva", price: 50, img: "img/presentes/papete.jpg" },
-      { id: 6, title: "Fone anti-ruído pra Julia ignorar o Sobral", price: 30, img: "img/presentes/fone.jpg" },
-      { id: 7, title: "Expansão de Ticket to Ride", price: 80, img: "img/presentes/tickettoride.jpg" },
-      { id: 8, title: "1 ano de corte de cabelo e barba pro Sobral", price: 40, img: "img/presentes/corte.jpg" },
-      { id: 9, title: "Aula de potinho pra Julia", price: 50, img: "img/presentes/potinho.jpg" },
-      { id: 10, title: "Ingresso das Paralimpíadas 2028", price: 120, img: "img/presentes/la28.png" }
+      { id: 6, title: "Aula de potinho pra Julia", price: 65, img: "img/presentes/potinho.jpg" },
+      { id: 7, title: "Tapete de Yoga pra noiva", price: 70, img: "img/presentes/tapeteyoga.jpg" },
+      { id: 8, title: "Camisa da Lusa pra noiva", price: 80, img: "img/presentes/camisalusa.jpg" },
+      { id: 9, title: "Expansão de Ticket to Ride", price: 90, img: "img/presentes/tickettoride.jpg" },
+      { id: 10, title: "Ingresso das Paralimpíadas 2028", price: 110, img: "img/presentes/la28.png" }
     ];
 
     // Carrinho refatorado para objeto (id do presente -> quantidade)
@@ -502,14 +610,62 @@
       }
     }
     
+    // Validação formal de CPF e genérica de RG
+    function validarDoc(doc) {
+      const num = doc.replace(/[\D]/g, '');
+      
+      // Aceita RG genérico (geralmente entre 7 e 10 dígitos)
+      if (num.length >= 7 && num.length <= 10) return true; 
+      
+      // Validação matemática de CPF (11 dígitos)
+      if (num.length === 11) {
+        if (/^(\d)\1+$/.test(num)) return false; // Bloqueia sequências como 00000000000
+        
+        let soma = 0, resto;
+        for (let i = 1; i <= 9; i++) soma += parseInt(num.substring(i-1, i)) * (11 - i);
+        resto = (soma * 10) % 11;
+        if ((resto == 10) || (resto == 11)) resto = 0;
+        if (resto != parseInt(num.substring(9, 10))) return false;
+        
+        soma = 0;
+        for (let i = 1; i <= 10; i++) soma += parseInt(num.substring(i-1, i)) * (12 - i);
+        resto = (soma * 10) % 11;
+        if ((resto == 10) || (resto == 11)) resto = 0;
+        if (resto != parseInt(num.substring(10, 11))) return false;
+        
+        return true;
+      }
+      return false; // Rejeita se não tiver tamanho válido
+    }
+
     // Submeter RSVP
     function submitRSVP(e) {
       e.preventDefault();
       
+      // Valida o documento do titular
+      const docInput = document.getElementById('rsvpDoc');
+      docInput.setCustomValidity(''); // Limpa erros anteriores
+      if (!validarDoc(docInput.value)) {
+        docInput.setCustomValidity('Por favor, insira um CPF ou RG válido.');
+        docInput.reportValidity(); // Exibe o balão nativo do navegador
+        return;
+      }
+      
       // Agora verificamos se o formulário do acompanhante está visível na tela
       const partnerFields = document.getElementById('partnerFields');
       const hasPartner = !partnerFields.classList.contains('hidden');
-      
+
+      // Valida o documento do acompanhante, se for preenchido
+      if (hasPartner) {
+        const partnerDocInput = document.getElementById('partnerDoc');
+        partnerDocInput.setCustomValidity(''); // Limpa erros anteriores
+        if (!validarDoc(partnerDocInput.value)) {
+          partnerDocInput.setCustomValidity('Por favor, insira um CPF ou RG válido para o acompanhante.');
+          partnerDocInput.reportValidity(); // Exibe o balão nativo do navegador
+          return;
+        }
+      }
+
       const payload = {
         action: 'save_rsvp',
         nome: document.getElementById('rsvpName').value,
