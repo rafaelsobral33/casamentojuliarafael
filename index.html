@@ -46,17 +46,20 @@
     /* Adicione este novo bloco para estilizar a legenda */
     .carousel-caption {
       position: absolute;
-      bottom: 25px; /* Distância da base da imagem */
-      left: 50%;
-      transform: translateX(-50%); /* Centraliza a caixa perfeitamente */
-      background: rgba(0, 0, 0, 0.65); /* Fundo escuro semi-transparente para dar leitura */
-      color: #FFFFFF;
-      padding: 8px 16px;
+      top: 20px; 
+      left: 20px; 
+      background: rgba(255, 255, 255, 0.85); 
+      color: #666666; 
+      padding: 4px 8px;
       border-radius: 6px;
-      font-size: 0.95rem;
-      text-align: center;
+      font-size: 1.1rem; /* Aumentei levemente o tamanho para a nova fonte ficar mais legível */
+      text-align: left;
       max-width: 90%;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+      
+      /* --- MUDANÇAS AQUI --- */
+      font-weight: 700; /* Deixa a letra em negrito (700 ou 'bold') */
+      font-family: 'Cormorant Garamond', serif; /* Muda para a mesma fonte usada nos títulos */
     }
     .carousel-slide img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
     .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; font-size: 2rem; padding: 10px 15px; cursor: pointer; border-radius: 50%; }
@@ -155,7 +158,7 @@
         <a onclick="showView('home'); scrollToSection('festa')">A Festa</a>
         <a onclick="showView('home'); scrollToSection('vestimenta')">Vestimenta</a>
         <a onclick="showView('home'); scrollToSection('rsvp')">RSVP</a>
-        <a onclick="showView('gifts')" style="color: var(--accent); font-weight: 600;">Lista de Presentes</a>
+        <a onclick="showView('gifts')" style="color: var(--accent); font-weight: 600;">Presentes</a>
         <div id="navCart" class="hidden" style="position: relative; margin-left: 20px;">
           <button onclick="toggleCartDropdown(event)" style="background:none; border:none; font-size: 1.2rem; cursor:pointer; font-weight: bold; padding: 5px;">
             🛒 <span id="cartBadge" style="background: var(--accent); color: white; border-radius: 50%; padding: 2px 8px; font-size: 0.8rem; position: relative; top: -2px;">0</span>
@@ -187,10 +190,8 @@
 
     <section id="casal" class="section">
       <h2 class="section-title">O Casal</h2>
-      <p style="max-width: 700px; margin: 0 auto 20px;"> 
-        A vida é divertida e o destino é inexorável. Depois de tantos anos estudando contemporaneamente na Escola Politécnica, esses dois se encontraram em Milão. Desde então, são mais de 5 anos juntos, muitas viagens e histórias pra contar!
-      </p>
-      
+      <p style="max-width: 800px; margin: 0 auto 20px;"> 
+        A vida é divertida e o destino é inexorável. Depois de tantos anos estudando contemporaneamente na Escola Politécnica sem se conhecer, esses dois doidinhos se encontraram em Milão. E o resto é história. Já são mais de 5 anos juntos, inúmeras viagens, dezenas de jogos de tabuleiro, esportes praticados e algumas noites dormidas em aeroporto.<br>E agora resolvemos nos casar e convidamos você para estar presente e festejar conosco! 
       <div class="carousel-container">
         <div class="carousel-slides" id="carouselSlides">
           <div class="carousel-slide">
@@ -199,55 +200,55 @@
           </div>
           <div class="carousel-slide">
             <img src="img/2.jpg" alt="Foto 2">
-            <div class="carousel-caption">Prainha</div>
+            <div class="carousel-caption">Sotto il sole di Riccione 🎶</div>
           </div>
           <div class="carousel-slide">
             <img src="img/3.jpg" alt="Foto 3">
-            <div class="carousel-caption">Taormina</div>
+            <div class="carousel-caption">A foto 😍<br>A bata 🤮</div>
           </div>
           <div class="carousel-slide">
             <img src="img/4.jpg" alt="Foto 4">
-            <div class="carousel-caption">Laurea da Juju</div>
+            <div class="carousel-caption">Dottoressa Julia Kawamoto</div>
           </div>
           <div class="carousel-slide">
             <img src="img/5.jpg" alt="Foto 5">
-            <div class="carousel-caption">Visita da Juju na Eslovênia</div>
+            <div class="carousel-caption">Existe amor na Eslovênia</div>
           </div>
           <div class="carousel-slide">
             <img src="img/6.jpg" alt="Foto 6">
-            <div class="carousel-caption">Marseille</div>
+            <div class="carousel-caption">Espontâneos nas alturas</div>
           </div>
           <div class="carousel-slide">
             <img src="img/7.jpg" alt="Foto 7">
-            <div class="carousel-caption">Corridinha mô</div>
+            <div class="carousel-caption">A corridinha e o staff</div>
           </div>
           <div class="carousel-slide">
             <img src="img/8.jpg" alt="Foto 8">
-            <div class="carousel-caption">Nascer do sol</div>
+            <div class="carousel-caption">Acordar para ver o nascer<br>do sol juntos 😴🌅</div>
           </div>
           <div class="carousel-slide">
             <img src="img/9.jpg" alt="Foto 9">
-            <div class="carousel-caption">Trilha</div>
+            <div class="carousel-caption">Explorando faunas e floras com você</div>
           </div>
           <div class="carousel-slide">
             <img src="img/10.jpg" alt="Foto 10">
-            <div class="carousel-caption">Pôr do sol</div>
+            <div class="carousel-caption">Viciados em assistir o sol</div>
           </div>
           <div class="carousel-slide">
             <img src="img/11.jpg" alt="Foto 11">
-            <div class="carousel-caption">Lugar favorito dela</div>
+            <div class="carousel-caption">No lugar favorito dela 🏟️</div>
           </div>
           <div class="carousel-slide">
             <img src="img/12.jpg" alt="Foto 12">
-            <div class="carousel-caption">Casinha juntos</div>
+            <div class="carousel-caption">A gente, uma rede e uma casinha nova</div>
           </div>
           <div class="carousel-slide">
             <img src="img/13.jpg" alt="Foto 13">
-            <div class="carousel-caption">Amor de muitos carnavais</div>
+            <div class="carousel-caption">Amor de muitos carnavais 🎊</div>
           </div>
           <div class="carousel-slide">
             <img src="img/14.jpg" alt="Foto 14">
-            <div class="carousel-caption">Olimpíadas hehe</div>
+            <div class="carousel-caption">Casal medalha de ouro? 🥇!</div>
           </div>
           <div class="carousel-slide">
             <img src="img/15.jpg" alt="Foto 15">
@@ -259,19 +260,19 @@
           </div>
           <div class="carousel-slide">
             <img src="img/17.jpg" alt="Foto 17">
-            <div class="carousel-caption">Pipa</div>
+            <div class="carousel-caption">Mó rolê descer depois</div>
           </div>
           <div class="carousel-slide">
             <img src="img/18.jpg" alt="Foto 18">
-            <div class="carousel-caption">Buggyzinho</div>
+            <div class="carousel-caption">Meios de transporte alternativos</div>
           </div>
           <div class="carousel-slide">
             <img src="img/19.jpg" alt="Foto 19">
-            <div class="carousel-caption">Chegando nos limites</div>
+            <div class="carousel-caption">Explorando os limites do mundo</div>
           </div>
           <div class="carousel-slide">
             <img src="img/20.jpg" alt="Foto 20">
-            <div class="carousel-caption">Casamento da Gi</div>
+            <div class="carousel-caption">Raras cenas de um Rafael arrumado</div>
           </div>
           <div class="carousel-slide">
             <img src="img/21.jpg" alt="Foto 21">
@@ -279,7 +280,7 @@
           </div>
           <div class="carousel-slide">
             <img src="img/22.jpg" alt="Foto 22">
-            <div class="carousel-caption">Viva Curitiba</div>
+            <div class="carousel-caption">Florzinhas 🌷</div>
           </div>
           <div class="carousel-slide">
             <img src="img/23.jpg" alt="Foto 23">
@@ -287,23 +288,23 @@
           </div>
           <div class="carousel-slide">
             <img src="img/24.jpg" alt="Foto 24">
-            <div class="carousel-caption">Geiser</div>
+            <div class="carousel-caption">"Pum da Terra"</div>
           </div>
           <div class="carousel-slide">
             <img src="img/25.jpg" alt="Foto 25">
-            <div class="carousel-caption">Li Can Ca Bur</div>
+            <div class="carousel-caption">Li-can-ca-bur 🌋</div>
           </div>
           <div class="carousel-slide">
             <img src="img/26.jpg" alt="Foto 26">
-            <div class="carousel-caption">O lugar do pedido hehe</div>
+            <div class="carousel-caption">No lugar do pedido hehe</div>
           </div>
           <div class="carousel-slide">
             <img src="img/27.jpg" alt="Foto 27">
-            <div class="carousel-caption">Fazendo o anel</div>
+            <div class="carousel-caption">Fazendo o anel 💍</div>
           </div>
           <div class="carousel-slide">
             <img src="img/28.jpg" alt="Foto 28">
-            <div class="carousel-caption">Lua de Mel?</div>
+            <div class="carousel-caption">🌕🍯?</div>
           </div>
         </div>
         <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
@@ -334,17 +335,24 @@
       <h2 class="section-title">A Festa</h2>
       <div class="info-card">
         <p style="margin-bottom: 20px;">
-          O evento será despojado e focado no que mais importa: comemorar com nossos amigos! Não haverá um jantar tradicional ou lugares marcados. Não haverá nem mesmo mesa pra sentar! A ideia é circular, curtir música boa e aproveitar os drinks e as pizzas servidas à vontade.
+          A ideia do evento é ser bem tranquilo, sem cerimônias, focado em curtir com vocês!! Não vai ter um jantar tradicional ou lugares marcados. Não haverá nem mesmo mesa pra sentar! A ideia é circular, curtir música boa e aproveitar os drinks e as pizzas servidas à vontade.
         </p>
 
         <h4 style="color: var(--primary-color);">Cronograma</h4>
         <ul class="rules-list">
-          <li>• <strong>16h30:</strong> Recepção e chegada dos convidados</li>
+          <li>• <strong>16h30:</strong> Início da festa</li>
           <li>• <strong>17h00:</strong> Abertura do bar</li>
           <li>• <strong>17h50:</strong> Pôr do sol</li>
           <li>• <strong>18h30:</strong> Discurso do(s) noivo(s)</li>
           <li>• <strong>22h00:</strong> Fim de festa</li>
         </ul>
+
+        <!-- Bloco dos Fornecedores adicionado aqui -->
+        <p style="margin-top: 25px; font-size: 0.95rem; text-align: center; background: #f9f9f9; padding: 15px; border-radius: 8px;">
+          🍹 <strong>Drinks por:</strong> <a href="https://www.instagram.com/chapadrinksp/" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">@chapadrinksp</a>
+          &nbsp;&nbsp;|&nbsp;&nbsp; 
+          🍕 <strong>Pizzas por:</strong> <a href="https://instagram.com/divinaincrenca" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">@divinaincrenca</a>
+        </p>
       </div>
     </section>
 
@@ -352,12 +360,13 @@
       <h2 class="section-title">Vestimenta</h2>
       <div class="info-card">
         <p style="margin-bottom: 20px;">
-          A ideia do evento é todo mundo estar confortável. Então no fim do dia, vá vestido como preferir! Abaixo temos algumas sugestões somente. 
+          A ideia do evento é todo mundo estar confortável. Então no fim do dia, vá vestido como preferir! Mas abaixo temos algumas sugestões. 
         </p>
         <p><strong>Traje: Esporte Fino</strong></p>
         <ul class="rules-list">
+          <li>• A noiva pediu para nenhuma menina ir de branco</li>
           <li>• Evitar paletó, porque não tem muitas cadeiras onde o apoiar e vai estar calor no dia</li>
-          <li>• Salto alto liberado, mas de preferência só se você tiver menos de 1,60m pra noiva se sentir alta</li>
+          <li>• Salto alto liberado, mas de preferência só se você tiver menos de 1,60m (pra noiva se sentir alta)</li>
           <li>• Evitar camisas de time, pro noivo não ficar com inveja</li>
         </ul>
       </div>
@@ -425,7 +434,14 @@
   <div id="view-gifts" class="container hidden">
     <section class="section">
       <h1 class="section-title">Lista de Presentes</h1>
-      <p style="margin-bottom: 20px;">Poder festejar com vocês é o que mais queremos de presente! Mas se fizer questão de nos presentear, adicione ao seu carrinho os itens que gostarem mais que ficaremos muito gratos pelo carinho!</p>
+      <p style="margin-bottom: 10px;">A sua presença na festa é o presente de verdade, então não precisa nos dar nada 😝 Mas se quiser muito nos enviar algum presente, adicione ao carrinho os itens que acharem mais legais e ficaremos muito gratos pelo seu carinho!</p>
+      
+      <!-- Nova linha adicionada aqui -->
+      <p style="margin-bottom: 30px; font-size: 0.9rem; color: var(--text-muted); font-style: italic;">
+        Ps.: Os preços são figurativos, não representam o preço real dos itens.<br>
+        Ps2.: Menos o corte de cabelo do noivo.
+      </p>
+
       <div class="gift-grid" id="giftGrid">
         </div>
     </section>
@@ -491,16 +507,24 @@
 
     // Dados dos Presentes
     const gifts = [
-      { id: 1, title: "Se eu não comprar nada,\no desconto é maior", price: 1, img: "img/presentes/julius.jpg" },
-      { id: 2, title: "1 mês de Geoguessr pro noivo", price: 10, img: "img/presentes/geoguessr.jpg" },
-      { id: 3, title: "Fone anti-ruído pra Julia ignorar o Sobral", price: 30, img: "img/presentes/fone.jpg" },
-      { id: 4, title: "1 ano de corte de cabelo e barba pro Sobral", price: 40, img: "img/presentes/corte.jpg" },
-      { id: 5, title: "Papete da noiva", price: 50, img: "img/presentes/papete.jpg" },
-      { id: 6, title: "Aula de potinho pra Julia", price: 65, img: "img/presentes/potinho.jpg" },
-      { id: 7, title: "Tapete de Yoga pra noiva", price: 70, img: "img/presentes/tapeteyoga.jpg" },
-      { id: 8, title: "Camisa da Lusa pra noiva", price: 80, img: "img/presentes/camisalusa.jpg" },
-      { id: 9, title: "Expansão de Ticket to Ride", price: 90, img: "img/presentes/tickettoride.jpg" },
-      { id: 10, title: "Ingresso das Paralimpíadas 2028", price: 110, img: "img/presentes/la28.png" }
+      { id: 1, title: "Se eu não comprar nada,<br>o desconto é maior", price: 1, img: "img/presentes/julius.jpg" },
+      { id: 2, title: "Incentivo para acordar pra mais um nascer do sol", price: 2, img: "img/presentes/nascerdosol.jpg" },
+      { id: 3, title: "Pipoquinha de lanchinho", price: 5, img: "img/presentes/pipoca.jpg" },
+      { id: 4, title: "1 mês de Geoguessr<br>pro noivo", price: 10, img: "img/presentes/geoguessr.jpg" },
+      { id: 5, title: "Bilhetes de ônibus<br>pra passiá no Ibirapuera", price: 11, img: "img/presentes/busao.jpg" },
+      { id: 6, title: "Coxinha de Shimeji da Padaria Real", price: 15, img: "img/presentes/coxinha.jpg" },
+      { id: 7, title: "2 Ingressos pro jogo<br>da Portuguesa", price: 30, img: "img/presentes/tristeza.jpg" },
+      { id: 8, title: "Fone anti-ruído pra Julia ignorar o Sobral", price: 30, img: "img/presentes/fone.jpg" },
+      { id: 9, title: "1 ano de corte de cabelo<br>e barba pro noivo", price: 40, img: "img/presentes/corte.jpg" },
+      { id: 10, title: "Papete da noiva", price: 50, img: "img/presentes/papete.jpg" },
+      { id: 11, title: "Filme para a Instax", price: 60, img: "img/presentes/instax.jpg" },
+      { id: 12, title: "Aula de potinho pra Julia", price: 65, img: "img/presentes/potinho.jpg" },
+      { id: 13, title: "Bentôzinho", price: 70, img: "img/presentes/bento.jpg" },
+      { id: 14, title: "Tapete de Yoga pra noiva", price: 70, img: "img/presentes/tapeteyoga.jpg" },
+      { id: 15, title: "Camisa da Lusa pra noiva", price: 80, img: "img/presentes/camisalusa.jpg" },
+      { id: 16, title: "Expansão de Ticket to Ride", price: 90, img: "img/presentes/tickettoride.jpg" },
+      { id: 17, title: "Ingresso das Paralimpíadas 2028", price: 110, img: "img/presentes/la28.png" },
+      { id: 18, title: "1 noite de Airbnb na próxima viagem", price: 130, img: "img/presentes/airbnb.jpg" }
     ];
 
     // Carrinho refatorado para objeto (id do presente -> quantidade)
