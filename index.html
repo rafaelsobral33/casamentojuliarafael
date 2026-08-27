@@ -110,16 +110,22 @@
         padding: 15px 10px;
       }
       
-      /* Permite que os links do menu quebrem de linha se não couberem */
+      /* Permite que os links do menu não quebrem de linha */
       nav { 
-        flex-wrap: wrap; 
+        flex-wrap: nowrap; 
         justify-content: center; 
-        gap: 12px; 
+        gap: 8px; 
+        width: 100%;
       }
       
       nav a { 
-        margin-left: 0; /* Remove a margem lateral que empurrava os links no PC */
-        font-size: 0.85rem; 
+        margin-left: 0; 
+        font-size: 0.75rem; 
+        white-space: nowrap; 
+      }
+
+      #navCart {
+        margin-left: 5px !important;
       }
 
       /* Diminui um pouco o tamanho dos títulos para caber na tela */
@@ -141,6 +147,35 @@
       #cartDropdown { 
         right: -50px; 
         width: 280px; 
+      }
+
+      /* Legenda da foto abaixo da imagem no celular */
+      .carousel-slide {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .carousel-caption {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        background: transparent; 
+        box-shadow: none; 
+        padding: 10px 5px 0;
+        color: var(--text-dark); 
+      }
+
+      /* Fornecedores em linhas separadas */
+      .fornecedor-item {
+        display: block;
+        margin-bottom: 8px;
+      }
+      
+      .fornecedor-separador {
+        display: none; 
       }
     }
   </style>
@@ -185,7 +220,7 @@
       <img src="img/header.jpg" alt="Capa" style="width: 100vw; height: 100vh; object-fit: cover; position: relative; left: 50%; transform: translateX(-50%); margin-top: -40px; margin-bottom: 40px; display: block;">
       
       <h1 class="section-title">Rafael & Julia</h1>
-      <p style="font-size: 1.2rem; color: var(--text-muted);">28 de Novembro de 2026 • São Paulo / SP</p>
+      <p style="font-size: 1.2rem; color: var(--text-muted);">28 de Novembro de 2026 • São Paulo-SP</p>
     </section>
 
     <section id="casal" class="section">
@@ -349,9 +384,9 @@
 
         <!-- Bloco dos Fornecedores adicionado aqui -->
         <p style="margin-top: 25px; font-size: 0.95rem; text-align: center; background: #f9f9f9; padding: 15px; border-radius: 8px;">
-          🍹 <strong>Drinks por:</strong> <a href="https://www.instagram.com/chapadrinksp/" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">@chapadrinksp</a>
-          &nbsp;&nbsp;|&nbsp;&nbsp; 
-          🍕 <strong>Pizzas por:</strong> <a href="https://instagram.com/divinaincrenca" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">@divinaincrenca</a>
+          <span class="fornecedor-item">🍹 <strong>Drinks por:</strong> <a href="https://www.instagram.com/chapadrinksp/" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">@chapadrinksp</a></span>
+          <span class="fornecedor-separador">&nbsp;&nbsp;|&nbsp;&nbsp;</span> 
+          <span class="fornecedor-item">🍕 <strong>Pizzas por:</strong> <a href="https://instagram.com/divinaincrenca" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">@divinaincrenca</a></span>
         </p>
       </div>
     </section>
@@ -514,17 +549,18 @@
       { id: 5, title: "Bilhetes de ônibus<br>pra passiá no Ibirapuera", price: 11, img: "img/presentes/busao.jpg" },
       { id: 6, title: "Coxinha de Shimeji da Padaria Real", price: 15, img: "img/presentes/coxinha.jpg" },
       { id: 7, title: "2 Ingressos pro jogo<br>da Portuguesa", price: 30, img: "img/presentes/tristeza.jpg" },
-      { id: 8, title: "Fone anti-ruído pra Julia ignorar o Sobral", price: 30, img: "img/presentes/fone.jpg" },
+      { id: 8, title: "Fone anti-ruído pra Julia ignorar o Sobral", price: 35, img: "img/presentes/fone.jpg" },
       { id: 9, title: "1 ano de corte de cabelo<br>e barba pro noivo", price: 40, img: "img/presentes/corte.jpg" },
-      { id: 10, title: "Papete da noiva", price: 50, img: "img/presentes/papete.jpg" },
-      { id: 11, title: "Filme para a Instax", price: 60, img: "img/presentes/instax.jpg" },
-      { id: 12, title: "Aula de potinho pra Julia", price: 65, img: "img/presentes/potinho.jpg" },
-      { id: 13, title: "Bentôzinho", price: 70, img: "img/presentes/bento.jpg" },
-      { id: 14, title: "Tapete de Yoga pra noiva", price: 70, img: "img/presentes/tapeteyoga.jpg" },
-      { id: 15, title: "Camisa da Lusa pra noiva", price: 80, img: "img/presentes/camisalusa.jpg" },
-      { id: 16, title: "Expansão de Ticket to Ride", price: 90, img: "img/presentes/tickettoride.jpg" },
-      { id: 17, title: "Ingresso das Paralimpíadas 2028", price: 110, img: "img/presentes/la28.png" },
-      { id: 18, title: "1 noite de Airbnb na próxima viagem", price: 130, img: "img/presentes/airbnb.jpg" }
+      { id: 10, title: "Travesseiro pra dormir no aeroporto", price: 45, img: "img/presentes/travesseiro.jpg" },
+      { id: 11, title: "Papete da noiva", price: 50, img: "img/presentes/papete.jpg" },
+      { id: 12, title: "Filme para a Instax", price: 60, img: "img/presentes/instax.jpg" },
+      { id: 13, title: "Aula de potinho pra Julia", price: 65, img: "img/presentes/potinho.jpg" },
+      { id: 14, title: "Bentôzinho", price: 70, img: "img/presentes/bento.jpg" },
+      { id: 15, title: "Tapete de Yoga pra noiva", price: 70, img: "img/presentes/tapeteyoga.jpg" },
+      { id: 16, title: "Camisa da Lusa pra noiva", price: 80, img: "img/presentes/camisalusa.jpg" },
+      { id: 17, title: "Expansão de Ticket to Ride", price: 90, img: "img/presentes/tickettoride.jpg" },
+      { id: 18, title: "Ingresso das Paralimpíadas 2028", price: 110, img: "img/presentes/la28.png" },
+      { id: 19, title: "1 noite de Airbnb na próxima viagem", price: 130, img: "img/presentes/airbnb.jpg" }
     ];
 
     // Carrinho refatorado para objeto (id do presente -> quantidade)
