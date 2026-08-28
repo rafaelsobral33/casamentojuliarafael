@@ -108,11 +108,24 @@
         overflow-x: hidden !important;
       }
 
+      /* Torna o cabeçalho fixo no topo no celular */
+      header {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      /* Empurra o conteúdo para baixo para não ficar escondido sob o cabeçalho fixo */
+      body {
+        padding-top: 115px; 
+      }
+
       /* Ajusta o cabeçalho para colocar a logo em cima e os links embaixo */
       .nav-container { 
         flex-direction: column; 
         gap: 10px; 
-        padding: 15px 5px; 
+        padding: 12px 5px; 
       }
       
       /* Links do menu em uma única linha */
@@ -150,6 +163,8 @@
 
       /* Restaura o menu do carrinho para o original, mas garante que não vaze a tela */
       #cartDropdown { 
+        position: absolute; /* Mantém o carrinho relativo ao menu fixo */
+        top: 100% !important;
         right: 0; 
         width: 280px;
         max-width: 90vw; 
