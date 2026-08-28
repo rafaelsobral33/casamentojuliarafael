@@ -107,6 +107,85 @@
     .hidden { display: none !important; }
 
     /* =========================================
+   ESTILOS DA SEÇÃO DE VESTIMENTA (INFOGRÁFICO)
+   ========================================= */
+    .dress-code-container {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .dress-code-col {
+      flex: 1;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .dress-code-center {
+      flex: 1.2;
+      min-width: 250px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dress-code-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-align: left;
+    }
+
+    .dress-code-icon {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      /* Fundo cinza temporário para você enxergar onde a imagem vai ficar */
+      background-color: #f4f4f4; 
+      border-radius: 8px;
+      padding: 5px;
+    }
+
+    .dress-code-title {
+      color: var(--primary-color);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      text-align: center;
+      border-bottom: 1px solid #eaeaea;
+      padding-bottom: 10px;
+    }
+
+    .dress-code-item p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .dress-code-item strong {
+      color: var(--primary-color);
+    }
+
+    /* Ajuste específico do mobile para o Infográfico */
+    @media (max-width: 768px) {
+      .dress-code-container {
+        flex-direction: column;
+      }
+      .dress-code-center {
+        order: -1; /* No celular, a foto do casal vai para o topo */
+        margin-bottom: 20px;
+      }
+      .dress-code-title {
+        margin-top: 10px;
+      }
+    }
+    /* =========================================
        AJUSTES PARA CELULAR (RESPONSIVIDADE)
        ========================================= */
     @media (max-width: 768px) {
@@ -443,20 +522,68 @@
 
     <section id="vestimenta" class="section">
       <h2 class="section-title">Vestimenta</h2>
-      <div class="info-card">
-        <p style="margin-bottom: 20px;">
-          A ideia do evento é todo mundo estar confortável. Então no fim do dia, vá vestido como preferir! Mas abaixo temos algumas sugestões. 
+      <div class="info-card" style="text-align: center;">
+        <p style="margin-bottom: 10px;">
+          A ideia do evento é todo mundo estar confortável e curtir junto. Então no fim do dia, vá vestido como preferir! Mas abaixo temos algumas sugestões do que idealizamos.
         </p>
-        <p><strong>Traje: Esporte Fino</strong></p>
-        <ul class="rules-list">
-          <li>• A noiva pediu para nenhuma menina ir de branco</li>
-          <li>• Sugerimos deixar o paletó em casa, para maior conforto e pela dinâmica do espaço</li>
-          <li>• Proibido salto alto se tiver mais de 1,60m pra noiva se sentir alta (mas se quiser, pode 🤪)</li>
-          <li>• Evitar camisas de time, pro noivo não ficar com inveja</li>
-        </ul>
+        
+        <h3 style="color: var(--primary-color); font-size: 1.5rem; letter-spacing: 2px; margin-top: 20px; text-transform: uppercase;">
+          Traje: Esporte Fino
+        </h3>
+
+        <div class="dress-code-container">
+          
+          <!-- Coluna Homens -->
+          <div class="dress-code-col">
+            <h3 class="dress-code-title">Homens</h3>
+            
+            <div class="dress-code-item" style="justify-content: center; text-align: center;">
+              <p>Camisa social ou esporte de <strong>manga longa</strong></p>
+            </div>
+            
+            <div class="dress-code-item" style="justify-content: center; text-align: center;">
+              <p>Calça de sarja, linho ou social</p>
+            </div>
+            
+            <div class="dress-code-item" style="justify-content: center; text-align: center;">
+              <p>Sugerimos <strong>deixar o paletó em casa</strong> para maior conforto, e <strong>sem gravata</strong>.</p>
+            </div>
+
+            <div class="dress-code-item" style="justify-content: center; text-align: center;">
+              <p>Evitar camisas de time, pro noivo não ficar com inveja!</p>
+            </div>
+          </div>
+
+          <!-- Centro (Imagem do Casal) -->
+          <div class="dress-code-center">
+            <!-- Substitua este src pela sua ilustração principal -->
+            <img src="img/casal-vestimenta.jpg" alt="Ilustração do Casal" style="width: 100%; max-width: 300px; object-fit: contain; margin: 0 auto; display: block;">
+          </div>
+
+          <!-- Coluna Mulheres -->
+          <div class="dress-code-col">
+            <h3 class="dress-code-title">Mulheres</h3>
+            
+            <div class="dress-code-item" style="justify-content: center; text-align: center;">
+              <p><strong>Vestido longo</strong> ou midi</p>
+            </div>
+            
+            <div class="dress-code-item" style="justify-content: center; text-align: center;">
+              <p>Sandálias, salto grosso ou blocos (ideal pela dinâmica do espaço)</p>
+            </div>
+            
+            <div class="dress-code-item" style="justify-content: center; text-align: center;">
+              <p>Proibido salto alto se tiver mais de 1,60m pra noiva se sentir alta (mas se quiser, pode 🤪)</p>
+            </div>
+
+            <div class="dress-code-item" style="justify-content: center; text-align: center;">
+              <p><strong>Evitar a cor branca</strong> (estritamente reservada para a noiva)</p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
-
     <section id="rsvp" class="section">
       <h2 class="section-title">Confirme sua Presença</h2>
       <div class="info-card">
@@ -607,7 +734,7 @@
       { id: 10, title: "Travesseiro pra dormir no aeroporto", price: 45, img: "img/presentes/travesseiro.jpg" },
       { id: 11, title: "Papete da noiva", price: 50, img: "img/presentes/papete.jpg" },
       { id: 12, title: "Filme para usar a<br>Instax em viagens", price: 60, img: "img/presentes/instax.jpg" },
-      { id: 13, title: "Aula de potinho pra Julia", price: 65, img: "img/presentes/potinho.jpg" },
+      { id: 13, title: "Aula de potinho pra Julia", price: 65, img: "img/presentes/potinho.png" },
       { id: 15, title: "Tapete de Yoga pra noiva", price: 70, img: "img/presentes/tapeteyoga.jpg" },
       { id: 16, title: "Camisa da Lusa pra noiva", price: 80, img: "img/presentes/camisalusa.jpg" },
       { id: 17, title: "Expansão de Ticket to Ride", price: 90, img: "img/presentes/tickettoride.jpg" },
