@@ -40,28 +40,35 @@
     .carousel-slide { 
       min-width: 100%; 
       box-sizing: border-box; 
-      position: relative; 
+      /* Adicionado do mobile para colocar a legenda embaixo */
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Adicione este novo bloco para estilizar a legenda */
     .carousel-caption {
-      position: absolute;
-      top: 20px; 
-      left: 20px; 
-      background: rgba(255, 255, 255, 0.85); 
-      color: #666666; 
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 1.1rem; /* Aumentei levemente o tamanho para a nova fonte ficar mais legível */
-      text-align: left;
-      max-width: 90%;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+      /* Estilos trazidos do mobile para padronizar */
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      max-width: 100%;
+      background: transparent; 
+      box-shadow: none; 
+      color: var(--text-dark); 
+      font-size: 1.25rem; 
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 10px;
+      line-height: 1.2;
       
-      /* --- MUDANÇAS AQUI --- */
-      font-weight: 700; /* Deixa a letra em negrito (700 ou 'bold') */
-      font-family: 'Cormorant Garamond', serif; /* Muda para a mesma fonte usada nos títulos */
+      /* Mantendo a fonte e o negrito que você já tinha configurado */
+      font-weight: 700; 
+      font-family: 'Cormorant Garamond', serif; 
     }
-    .carousel-slide img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+    .carousel-slide img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; display: block; }
     .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; font-size: 2rem; padding: 10px 15px; cursor: pointer; border-radius: 50%; }
     .carousel-btn.prev { left: 15px; }
     .carousel-btn.next { right: 15px; }
@@ -204,6 +211,10 @@
       .fornecedor-separador {
         display: none; 
       }
+
+      .carousel-slide img {
+        aspect-ratio: 16 / 9;
+      }
     }
   </style>
 </head>
@@ -253,7 +264,7 @@
     <section id="casal" class="section">
       <h2 class="section-title">O Casal</h2>
       <p style="max-width: 800px; margin: 0 auto 20px;"> 
-        A vida é divertida e o destino é inexorável. Depois de tantos anos estudando contemporaneamente na Escola Politécnica sem se conhecer, esses dois doidinhos se encontraram em Milão. E o resto é história. Já são mais de 5 anos juntos, inúmeras viagens, dezenas de jogos de tabuleiro, esportes praticados e algumas noites dormidas em aeroporto.<br>E agora resolvemos nos casar e convidamos você para estar presente e festejar conosco! 
+        A vida é divertida e o destino é inexorável. Depois de tantos anos estudando contemporaneamente na Escola Politécnica sem se conhecer, esses dois se encontraram em Milão. E o resto é história. Já são mais de 5 anos juntos, inúmeras viagens, dezenas de jogos de tabuleiro, esportes praticados e algumas noites dormidas em aeroporto.<br>E agora resolvemos nos casar e convidamos você para estar presente e festejar conosco! 
       <div class="carousel-container">
         <div class="carousel-slides" id="carouselSlides">
           <div class="carousel-slide">
@@ -266,7 +277,7 @@
           </div>
           <div class="carousel-slide">
             <img src="img/3.jpg" alt="Foto 3">
-            <div class="carousel-caption">A foto 😍<br>A bata 🤮</div>
+            <div class="carousel-caption">A foto 😍 | A bata 🤮</div>
           </div>
           <div class="carousel-slide">
             <img src="img/4.jpg" alt="Foto 4">
@@ -286,14 +297,14 @@
           </div>
           <div class="carousel-slide">
             <img src="img/8.jpg" alt="Foto 8">
-            <div class="carousel-caption">Acordar para ver o nascer<br>do sol juntos 😴🌅</div>
+            <div class="carousel-caption">Acordar para ver o nascer do sol juntos 😴🌅</div>
           </div>
           <div class="carousel-slide">
             <img src="img/9.jpg" alt="Foto 9">
-            <div class="carousel-caption">Explorando faunas e floras com você</div>
+            <div class="carousel-caption">Explorando faunas e floras brasileiras</div>
           </div>
           <div class="carousel-slide">
-            <img src="img/10.jpg" alt="Foto 10">
+            <img src="img/10.png" alt="Foto 10">
             <div class="carousel-caption">Viciados em assistir o sol</div>
           </div>
           <div class="carousel-slide">
@@ -310,7 +321,7 @@
           </div>
           <div class="carousel-slide">
             <img src="img/14.jpg" alt="Foto 14">
-            <div class="carousel-caption">Casal medalha de ouro? 🥇!</div>
+            <div class="carousel-caption">Casal medalha de ouro?! 🥇</div>
           </div>
           <div class="carousel-slide">
             <img src="img/15.jpg" alt="Foto 15">
@@ -318,11 +329,11 @@
           </div>
           <div class="carousel-slide">
             <img src="img/16.jpg" alt="Foto 16">
-            <div class="carousel-caption">São Silvestre!</div>
+            <div class="carousel-caption">São Silvestre! ✌️</div>
           </div>
           <div class="carousel-slide">
             <img src="img/17.jpg" alt="Foto 17">
-            <div class="carousel-caption">Mó rolê descer depois</div>
+            <div class="carousel-caption">Chapadão de Pipa ☘️🪁</div>
           </div>
           <div class="carousel-slide">
             <img src="img/18.jpg" alt="Foto 18">
@@ -366,7 +377,7 @@
           </div>
           <div class="carousel-slide">
             <img src="img/28.jpg" alt="Foto 28">
-            <div class="carousel-caption">🌕🍯?</div>
+            <div class="carousel-caption">🌚🍯?</div>
           </div>
         </div>
         <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
@@ -397,24 +408,24 @@
       <h2 class="section-title">A Festa</h2>
       <div class="info-card">
         <p style="margin-bottom: 20px;">
-          A ideia do evento é ser bem tranquilo, sem cerimônias, focado em curtir com vocês!! Não vai ter um jantar tradicional ou lugares marcados. Não haverá nem mesmo mesa pra sentar! A ideia é circular, curtir música boa e aproveitar os drinks e as pizzas servidas à vontade.
+          A ideia do evento é ser bem tranquilo, sem cerimônias, focado em curtir com vocês!! O evento será estilo coquetel, sem lugares marcados ou mesa de jantar tradicional. A ideia é circular, curtir música boa e aproveitar os drinks e as pizzas servidas à vontade!
         </p>
 
         <h4 style="color: var(--primary-color);">Cronograma</h4>
         <ul class="rules-list">
           <li>• <strong>16h30:</strong> Início da festa</li>
+          <li>• <strong>16h31:</strong> Início da comida</li>
           <li>• <strong>17h00:</strong> Abertura do bar</li>
-          <li>• <strong>17h50:</strong> Pôr do sol</li>
-          <li>• <strong>18h30:</strong> Discurso do(s) noivo(s)</li>
+          <li>• <strong>18h38:</strong> Pôr do sol</li>
           <li>• <strong>22h00:</strong> Fim de festa</li>
         </ul>
 
         <!-- Bloco dos Fornecedores adicionado aqui -->
-        <p style="margin-top: 25px; font-size: 0.95rem; text-align: center; background: #f9f9f9; padding: 15px; border-radius: 8px;">
+        <!--<p style="margin-top: 25px; font-size: 0.95rem; text-align: center; background: #f9f9f9; padding: 15px; border-radius: 8px;">
           <span class="fornecedor-item">🍹 <strong>Drinks por:</strong> <a href="https://www.instagram.com/chapadrinksp/" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">@chapadrinksp</a></span>
           <span class="fornecedor-separador">&nbsp;&nbsp;|&nbsp;&nbsp;</span> 
           <span class="fornecedor-item">🍕 <strong>Pizzas por:</strong> <a href="https://instagram.com/divinaincrenca" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">@divinaincrenca</a></span>
-        </p>
+        </p>-->
       </div>
     </section>
 
@@ -427,8 +438,8 @@
         <p><strong>Traje: Esporte Fino</strong></p>
         <ul class="rules-list">
           <li>• A noiva pediu para nenhuma menina ir de branco</li>
-          <li>• Evitar paletó, porque não tem muitas cadeiras onde o apoiar e vai estar calor no dia</li>
-          <li>• Salto alto liberado, mas de preferência só se você tiver menos de 1,60m (pra noiva se sentir alta)</li>
+          <li>• Sugerimos deixar o paletó em casa, para maior conforto e pela dinâmica do espaço</li>
+          <li>• Proibido salto alto se tiver mais de 1,60m pra noiva se sentir alta (mas se quiser, pode 🤪)</li>
           <li>• Evitar camisas de time, pro noivo não ficar com inveja</li>
         </ul>
       </div>
@@ -496,7 +507,7 @@
   <div id="view-gifts" class="container hidden">
     <section class="section">
       <h1 class="section-title">Lista de Presentes</h1>
-      <p style="margin-bottom: 10px;">A sua presença na festa é o presente de verdade, então não precisa nos dar nada 😝 Mas se quiser muito nos enviar algum presente, adicione ao carrinho os itens que acharem mais legais e ficaremos muito gratos pelo seu carinho!</p>
+      <p style="margin-bottom: 10px;">A sua presença na festa é o presente de verdade, então não precisa nos dar nada 😝 Mas se quiser muito nos enviar algum presente, adicione ao carrinho os itens que achar mais legais e ficaremos muito gratos pelo seu carinho!</p>
       
       <!-- Nova linha adicionada aqui -->
       <p style="margin-bottom: 30px; font-size: 0.9rem; color: var(--text-muted); font-style: italic;">
@@ -574,24 +585,23 @@
     // Dados dos Presentes
     const gifts = [
       { id: 1, title: "Se eu não comprar nada,<br>o desconto é maior", price: 1, img: "img/presentes/julius.jpg" },
-      { id: 2, title: "Incentivo para acordar pra mais um nascer do sol", price: 2, img: "img/presentes/nascerdosol.jpg" },
-      { id: 3, title: "Pipoquinha de lanchinho", price: 5, img: "img/presentes/pipoca.jpg" },
+      { id: 3, title: "Pipoquinha", price: 5, img: "img/presentes/pipoca.jpg" },
       { id: 4, title: "1 mês de Geoguessr<br>pro noivo", price: 10, img: "img/presentes/geoguessr.jpg" },
       { id: 5, title: "Bilhetes de ônibus<br>pra passiá no Ibirapuera", price: 11, img: "img/presentes/busao.jpg" },
-      { id: 6, title: "Coxinha de Shimeji da Padaria Real", price: 15, img: "img/presentes/coxinha.jpg" },
+      { id: 6, title: "Coxinha da Padaria Real", price: 15, img: "img/presentes/coxinha.jpg" },
       { id: 7, title: "2 Ingressos pro jogo<br>da Portuguesa", price: 30, img: "img/presentes/tristeza.jpg" },
-      { id: 8, title: "Fone anti-ruído pra Julia ignorar o Sobral", price: 35, img: "img/presentes/fone.jpg" },
+      { id: 8, title: "Fone anti-ruído pra não ouvir o barulho do noivo", price: 35, img: "img/presentes/fone.jpg" },
       { id: 9, title: "1 ano de corte de cabelo<br>e barba pro noivo", price: 40, img: "img/presentes/corte.jpg" },
       { id: 10, title: "Travesseiro pra dormir no aeroporto", price: 45, img: "img/presentes/travesseiro.jpg" },
       { id: 11, title: "Papete da noiva", price: 50, img: "img/presentes/papete.jpg" },
-      { id: 12, title: "Filme para a Instax", price: 60, img: "img/presentes/instax.jpg" },
+      { id: 12, title: "Filme para usar a<br>Instax em viagens", price: 60, img: "img/presentes/instax.jpg" },
       { id: 13, title: "Aula de potinho pra Julia", price: 65, img: "img/presentes/potinho.jpg" },
-      { id: 14, title: "Bentôzinho", price: 70, img: "img/presentes/bento.jpg" },
       { id: 15, title: "Tapete de Yoga pra noiva", price: 70, img: "img/presentes/tapeteyoga.jpg" },
       { id: 16, title: "Camisa da Lusa pra noiva", price: 80, img: "img/presentes/camisalusa.jpg" },
       { id: 17, title: "Expansão de Ticket to Ride", price: 90, img: "img/presentes/tickettoride.jpg" },
       { id: 18, title: "Ingresso das Paralimpíadas 2028", price: 110, img: "img/presentes/la28.png" },
-      { id: 19, title: "1 noite de Airbnb na próxima viagem", price: 130, img: "img/presentes/airbnb.jpg" }
+      { id: 19, title: "1 noite de Airbnb na próxima viagem", price: 130, img: "img/presentes/airbnb.jpg" },
+      { id: 20, title: "Viagem Completa<br>Oceania 2032", price: 50000, img: "img/presentes/oceania.jpg" }
     ];
 
     // Carrinho refatorado para objeto (id do presente -> quantidade)
