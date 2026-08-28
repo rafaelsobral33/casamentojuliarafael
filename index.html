@@ -135,20 +135,23 @@
         padding: 12px 5px; 
       }
       
-      /* Links do menu em uma única linha */
+      /* Menu flexível que se adapta à largura */
       nav { 
         flex-wrap: nowrap; 
-        justify-content: center; 
-        gap: 8px; 
+        justify-content: space-between; /* Espalha os botões usando todo o espaço disponível */
+        gap: 0; /* Removemos o espaçamento fixo para evitar que ele empurre os itens para fora */
         width: 100%;
+        padding: 0 5px; /* Uma pequena margem nas laterais para não grudar na borda do celular */
       }
       
+      /* Links com tamanho de fonte variável */
       nav a { 
         margin-left: 0; 
-        font-size: 0.75rem; 
+        /* A mágica acontece aqui: a fonte diminui junto com a tela, mas nunca fica menor que 9px nem maior que 12px */
+        font-size: clamp(9px, 2.5vw, 12px); 
         white-space: nowrap; 
       }
-
+      
       #navCart {
         margin-left: 0 !important;
       }
@@ -215,7 +218,7 @@
       .carousel-slide img {
         aspect-ratio: 16 / 9;
       }
-      
+
       .carousel-btn {
         font-size: 1.2rem;       /* Reduz o tamanho do ícone da seta */
         padding: 6px 12px;       /* Reduz o tamanho da bolinha ao redor da seta */
