@@ -103,29 +103,34 @@
        AJUSTES PARA CELULAR (RESPONSIVIDADE)
        ========================================= */
     @media (max-width: 768px) {
+      /* Garante que a página não tenha rolagem horizontal sob nenhuma hipótese */
+      html, body {
+        overflow-x: hidden !important;
+      }
+
       /* Ajusta o cabeçalho para colocar a logo em cima e os links embaixo */
       .nav-container { 
         flex-direction: column; 
-        gap: 15px; 
-        padding: 15px 10px;
+        gap: 10px; 
+        padding: 15px 5px; /* Menos margem lateral para ganhar espaço para os links */
       }
       
-      /* Permite que os links do menu não quebrem de linha */
+      /* Links do menu em uma única linha, bem compactos */
       nav { 
         flex-wrap: nowrap; 
         justify-content: center; 
-        gap: 8px; 
+        gap: 6px; /* Espaço bem reduzido entre as palavras */
         width: 100%;
       }
       
       nav a { 
         margin-left: 0; 
-        font-size: 0.75rem; 
+        font-size: 0.65rem; /* Fonte diminuída (aprox 10px) para caber tudo na mesma linha */
         white-space: nowrap; 
       }
 
       #navCart {
-        margin-left: 5px !important;
+        margin-left: 2px !important;
       }
 
       /* Diminui um pouco o tamanho dos títulos para caber na tela */
@@ -143,13 +148,14 @@
         padding: 20px; 
       }
 
-      /* Garante que o menu do carrinho não vaze para fora da tela do celular */
+      /* Restaura o menu do carrinho para o original, mas garante que não vaze a tela */
       #cartDropdown { 
-        right: -50px; 
-        width: 280px; 
+        right: 0; /* Alinha o carrinho à direita para não vazar a tela */
+        width: 280px;
+        max-width: 90vw; /* Garante que nunca será mais largo que a tela do celular */
       }
 
-      /* Legenda da foto abaixo da imagem no celular */
+      /* Legenda da foto abaixo da imagem no celular, maior e centralizada */
       .carousel-slide {
         display: flex;
         flex-direction: column;
@@ -161,11 +167,17 @@
         left: 0;
         width: 100%;
         max-width: 100%;
-        text-align: center;
         background: transparent; 
         box-shadow: none; 
-        padding: 10px 5px 0;
         color: var(--text-dark); 
+        font-size: 1.25rem !important; 
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 70px;
+        padding: 10px;
+        line-height: 1.2;
       }
 
       /* Fornecedores em linhas separadas */
