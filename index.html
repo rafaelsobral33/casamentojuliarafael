@@ -215,6 +215,15 @@
       .carousel-slide img {
         aspect-ratio: 16 / 9;
       }
+      
+      .carousel-btn {
+        font-size: 1.2rem;       /* Reduz o tamanho do ícone da seta */
+        padding: 6px 12px;       /* Reduz o tamanho da bolinha ao redor da seta */
+        
+        /* Como a legenda empurra o centro para baixo, nós subimos as setas um pouco.
+           Se 40% ainda não ficar no meio exato da foto, você pode testar 35% ou 45% */
+        top: 40%; 
+      }
     }
   </style>
 </head>
@@ -864,6 +873,7 @@
       for (const id in cart) {
         const qty = cart[id];
         const gift = gifts.find(g => g.id == id);
+        const cleanTitle = gift.title.replace(/<br>/gi, ' '); // Remove os <br> e troca por um espaço
         
         totalItems += qty;
         totalPrice += (gift.price * qty);
@@ -876,16 +886,16 @@
               <span style="font-weight:bold; min-width: 15px; text-align: center;">${qty}</span>
               <button onclick="addToCart(${id}); event.stopPropagation();" style="background:var(--primary-color); color:white; border:none; border-radius:50%; width:22px; height:22px; cursor:pointer; font-weight:bold; display:flex; align-items:center; justify-content:center;">+</button>
             </div>
-            <span style="flex: 1; text-align: left; line-height: 1.2;">${gift.title}</span>
+            <span style="flex: 1; text-align: left; line-height: 1.2;">${cleanTitle}</span>
             <span style="font-weight: 600; white-space: nowrap;">R$ ${gift.price * qty},00</span>
           </div>
         `;
 
         // HTML para o Modal de Finalizar Presente (Resumo da compra)
         checkoutItemsHtml += `
-          <div style="display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px dashed #ccc; padding-bottom: 8px;">
-            <span><strong>${qty}x</strong> ${gift.title}</span>
-            <strong>R$ ${gift.price * qty},00</strong>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px dashed #ccc; padding-bottom: 8px;">
+            <span style="flex: 1; text-align: left; padding-right: 20px;"><strong>${qty}x</strong> ${cleanTitle}</span>
+            <strong style="white-space: nowrap;">R$ ${gift.price * qty},00</strong>
           </div>
         `;
       }
