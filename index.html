@@ -112,25 +112,25 @@
       .nav-container { 
         flex-direction: column; 
         gap: 10px; 
-        padding: 15px 5px; /* Menos margem lateral para ganhar espaço para os links */
+        padding: 15px 5px; 
       }
       
-      /* Links do menu em uma única linha, bem compactos */
+      /* Links do menu em uma única linha */
       nav { 
         flex-wrap: nowrap; 
         justify-content: center; 
-        gap: 6px; /* Espaço bem reduzido entre as palavras */
+        gap: 8px; 
         width: 100%;
       }
       
       nav a { 
         margin-left: 0; 
-        font-size: 0.65rem; /* Fonte diminuída (aprox 10px) para caber tudo na mesma linha */
+        font-size: 0.75rem; 
         white-space: nowrap; 
       }
 
       #navCart {
-        margin-left: 2px !important;
+        margin-left: 0 !important;
       }
 
       /* Diminui um pouco o tamanho dos títulos para caber na tela */
@@ -150,9 +150,9 @@
 
       /* Restaura o menu do carrinho para o original, mas garante que não vaze a tela */
       #cartDropdown { 
-        right: 0; /* Alinha o carrinho à direita para não vazar a tela */
+        right: 0; 
         width: 280px;
-        max-width: 90vw; /* Garante que nunca será mais largo que a tela do celular */
+        max-width: 90vw; 
       }
 
       /* Legenda da foto abaixo da imagem no celular, maior e centralizada */
@@ -205,7 +205,7 @@
         <a onclick="showView('home'); scrollToSection('festa')">A Festa</a>
         <a onclick="showView('home'); scrollToSection('vestimenta')">Vestimenta</a>
         <a onclick="showView('home'); scrollToSection('rsvp')">RSVP</a>
-        <a onclick="showView('gifts')" style="color: var(--accent); font-weight: 600;">Presentes</a>
+        <a id="navPresentesLink" onclick="showView('gifts')" style="color: var(--accent); font-weight: 600;">Presentes</a>
         <div id="navCart" class="hidden" style="position: relative; margin-left: 20px;">
           <button onclick="toggleCartDropdown(event)" style="background:none; border:none; font-size: 1.2rem; cursor:pointer; font-weight: bold; padding: 5px;">
             🛒 <span id="cartBadge" style="background: var(--accent); color: white; border-radius: 50%; padding: 2px 8px; font-size: 0.8rem; position: relative; top: -2px;">0</span>
@@ -228,11 +228,11 @@
 
   <div id="view-home" class="container">
     
-  <section class="section">
-      <img src="img/header.jpg" alt="Capa" style="width: 100vw; height: 100vh; object-fit: cover; position: relative; left: 50%; transform: translateX(-50%); margin-top: -40px; margin-bottom: 40px; display: block;">
+  <section class="section" style="margin-bottom: 20px;">
+      <img src="img/header.jpg" alt="Capa" style="width: 100vw; height: 100vh; object-fit: cover; position: relative; left: 50%; transform: translateX(-50%); margin-top: -40px; margin-bottom: 30px; display: block;">
       
-      <h1 class="section-title">Rafael & Julia</h1>
-      <p style="font-size: 1.2rem; color: var(--text-muted);">28 de Novembro de 2026 • São Paulo-SP</p>
+      <h1 class="section-title" style="margin-bottom: 10px;">Rafael & Julia</h1>
+      <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 0;">28 de Novembro de 2026 • São Paulo-SP</p>
     </section>
 
     <section id="casal" class="section">
@@ -508,9 +508,13 @@
       <button class="modal-close" onclick="closeModal('checkoutModal')">×</button>
       <h2 style="color: var(--primary-color); margin-bottom: 15px;">Finalizar Presente</h2>
       
-      <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 20px; text-align: center;">Total a pagar: R$ <span id="checkoutTotal">0</span>,00</p>
-      <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;">
+      <!-- Nova área que mostrará a lista de itens selecionados -->
+      <div id="checkoutItemsList" style="margin-bottom: 15px; background: #f9f9f9; padding: 15px; border-radius: 8px; font-size: 0.9rem; max-height: 180px; overflow-y: auto;">
+        <!-- Os itens aparecerão aqui via JavaScript -->
+      </div>
 
+      <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 20px; text-align: right;">Total a pagar: R$ <span id="checkoutTotal">0</span>,00</p>
+      <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;">
       <form id="giftCheckoutForm" onsubmit="submitGiftCheckout(event)">
         <h3 style="margin-bottom: 10px;">Pagamento via Pix</h3>
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">
@@ -589,7 +593,10 @@
 
         document.getElementById('view-home').classList.remove('hidden');
         document.getElementById('view-gifts').classList.add('hidden');
+        
+        // Esconde o carrinho e MOSTRA o link de presentes
         document.getElementById('navCart').classList.add('hidden'); 
+        document.getElementById('navPresentesLink').classList.remove('hidden'); 
         
         // Só rola para o topo se a pessoa clicou explicitamente na logo ou no botão "Home"
         if (isHomeButton) {
@@ -602,7 +609,11 @@
       } else {
         document.getElementById('view-home').classList.add('hidden');
         document.getElementById('view-gifts').classList.remove('hidden');
+        
+        // Mostra o carrinho e ESCONDE o link de presentes
         document.getElementById('navCart').classList.remove('hidden'); 
+        document.getElementById('navPresentesLink').classList.add('hidden'); 
+        
         renderGifts();
         updateCartUI();
         window.scrollTo(0,0);
@@ -823,6 +834,7 @@
       let totalItems = 0;
       let totalPrice = 0;
       let dropdownHtml = '';
+      let checkoutItemsHtml = ''; // Variável para a lista do modal de checkout
 
       for (const id in cart) {
         const qty = cart[id];
@@ -831,24 +843,45 @@
         totalItems += qty;
         totalPrice += (gift.price * qty);
 
+        // HTML do Dropdown com botões de + e -
         dropdownHtml += `
-          <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size: 0.9rem; align-items: center;">
-            <span style="flex: 1; text-align: left; padding-right: 10px;"><strong>${qty}x</strong> ${gift.title}</span>
-            <span style="font-weight: 600;">R$ ${gift.price * qty},00</span>
+          <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size: 0.9rem; align-items: center; gap: 8px;">
+            <div style="display:flex; align-items:center; gap: 6px;">
+              <button onclick="removeFromCart(${id}); event.stopPropagation();" style="background:var(--primary-color); color:white; border:none; border-radius:50%; width:22px; height:22px; cursor:pointer; font-weight:bold; display:flex; align-items:center; justify-content:center;">-</button>
+              <span style="font-weight:bold; min-width: 15px; text-align: center;">${qty}</span>
+              <button onclick="addToCart(${id}); event.stopPropagation();" style="background:var(--primary-color); color:white; border:none; border-radius:50%; width:22px; height:22px; cursor:pointer; font-weight:bold; display:flex; align-items:center; justify-content:center;">+</button>
+            </div>
+            <span style="flex: 1; text-align: left; line-height: 1.2;">${gift.title}</span>
+            <span style="font-weight: 600; white-space: nowrap;">R$ ${gift.price * qty},00</span>
+          </div>
+        `;
+
+        // HTML para o Modal de Finalizar Presente (Resumo da compra)
+        checkoutItemsHtml += `
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px dashed #ccc; padding-bottom: 8px;">
+            <span><strong>${qty}x</strong> ${gift.title}</span>
+            <strong>R$ ${gift.price * qty},00</strong>
           </div>
         `;
       }
 
-      // Atualiza Badges (bolinhas de número)
+      // Atualiza Badges (bolinhas de número e totais)
       document.getElementById('cartBadge').innerText = totalItems;
       document.getElementById('dropdownTotal').innerText = totalPrice;
       document.getElementById('checkoutTotal').innerText = totalPrice;
 
       if (totalItems === 0) {
         dropdownHtml = '<p style="text-align:center; color: #999; font-size: 0.9rem;">Seu carrinho está vazio.</p>';
+        checkoutItemsHtml = ''; // Esvazia o resumo se não houver itens
       }
       
       document.getElementById('dropdownCartList').innerHTML = dropdownHtml;
+      
+      // Insere os itens na lista de pagamento
+      const checkoutListEl = document.getElementById('checkoutItemsList');
+      if (checkoutListEl) {
+        checkoutListEl.innerHTML = checkoutItemsHtml;
+      }
 
       // Re-renderiza a vitrine para exibir os novos botões +/-
       renderGifts();
