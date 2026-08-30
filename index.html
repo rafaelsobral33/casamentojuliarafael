@@ -793,10 +793,11 @@
         </p>
 
         <div style="text-align: center; margin-bottom: 15px; padding: 15px; background: #f9f9f9; border-radius: 8px;">
-          <img src="https://via.placeholder.com/180x180/000000/FFFFFF?text=QR+Code+Pix" alt="QR Code Pix" style="border: 1px solid #ddd; padding: 5px; margin-bottom: 10px;">
+          <img src="img/qrcode.jpeg" alt="QR Code Pix" style="width: 150px; border: 1px solid #ddd; padding: 5px; margin-bottom: 10px;">
           
-          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-            <p style="font-size: 0.9rem; margin: 0;">Chave Pix (E-mail): <strong id="pixKey">exemplo@noivos.com</strong></p>
+          <!-- Adicionado flex-direction: column; aqui -->
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+            <p style="font-size: 0.9rem; margin: 0;">Chave Pix: <strong id="pixKey">15 99693-0114</strong></p>
             <button type="button" id="copyPixBtn" onclick="copyPix()" style="background: var(--secondary-color); color: white; border: none; padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; transition: 0.3s;">
               Copiar Chave
             </button>
