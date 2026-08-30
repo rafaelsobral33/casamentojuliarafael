@@ -498,7 +498,7 @@
     <section id="festa" class="section">
       <h2 class="section-title">A Festa</h2>
       <div class="info-card">
-        <p style="margin-bottom: 20px; text-align: center;">
+        <p style="margin-bottom: 20px;">
           O evento vai ser bem tranquilo, sem cerimônias, focado em curtir com vocês!! A festa será estilo coquetel, sem lugares marcados ou mesa de jantar tradicional. A ideia é circular, curtir música boa e aproveitar os drinks e as pizzas servidas à vontade!
         </p>
 
@@ -524,7 +524,7 @@
       <h2 class="section-title">Vestimenta</h2>
       <div class="info-card" style="text-align: center;">
         <p style="margin-bottom: 10px;">
-          Queremos que todos estejam confortáveis para nos divertirmos juntos. Então no fim do dia, vá vestido como preferir! De qualquer forma, abaixo temos algumas sugestões do que idealizamos.
+          Queremos que todos estejam confortáveis para nos divertirmos juntos. Então no fim do dia, vá vestido como preferir! Mas abaixo temos algumas sugestões do que idealizamos.
         </p>
         
         <h3 style="color: var(--primary-color); font-size: 1.5rem; letter-spacing: 2px; margin-top: 20px; text-transform: uppercase;">
@@ -538,7 +538,7 @@
             <h3 class="dress-code-title">Homens</h3>
             
             <div class="dress-code-item" style="justify-content: center; text-align: center;">
-              <p>Camisa social ou de linho de manga longa</p>
+              <p>Camisa social ou esporte de <strong>manga longa</strong></p>
             </div>
             
             <div class="dress-code-item" style="justify-content: center; text-align: center;">
@@ -546,11 +546,11 @@
             </div>
             
             <div class="dress-code-item" style="justify-content: center; text-align: center;">
-              <p>Sugerimos deixar o paletó e a gravata em casa para maior conforto.</p>
+              <p>Sugerimos <strong>deixar o paletó em casa</strong> para maior conforto, e <strong>sem gravata</strong>.</p>
             </div>
 
             <div class="dress-code-item" style="justify-content: center; text-align: center;">
-              <p>Proibido camisas de time, pro noivo não ficar com inveja!</p>
+              <p>Evitar camisas de time, pro noivo não ficar com inveja!</p>
             </div>
           </div>
 
@@ -565,19 +565,19 @@
             <h3 class="dress-code-title">Mulheres</h3>
             
             <div class="dress-code-item" style="justify-content: center; text-align: center;">
-              <p>Vestido ou saia, longo ou midi</p>
+              <p><strong>Vestido longo</strong> ou midi</p>
             </div>
             
             <div class="dress-code-item" style="justify-content: center; text-align: center;">
-              <p>Sandálias, salto grosso ou blocos</p>
+              <p>Sandálias, salto grosso ou blocos (ideal pela dinâmica do espaço)</p>
             </div>
             
             <div class="dress-code-item" style="justify-content: center; text-align: center;">
-              <p>Proibido salto alto se tiver mais de 1,60m pra noiva se sentir alta (mas se quiser, pode 😝)</p>
+              <p>Proibido salto alto se tiver mais de 1,60m pra noiva se sentir alta (mas se quiser, pode 🤪)</p>
             </div>
 
             <div class="dress-code-item" style="justify-content: center; text-align: center;">
-              <p><strong>Restrição de cores:</strong> Evitar branco, off-white e creme, estritamente reservado para a noiva</p>
+              <p><strong>Evitar a cor branca</strong> (estritamente reservada para a noiva)</p>
             </div>
           </div>
 
@@ -635,112 +635,6 @@
         </form>
       </div>
     </section>
-
-    <!-- Estilos do Contador (Design) -->
-    <style>
-      .contador-container {
-        text-align: center;
-        font-family: "Georgia", serif; /* Fonte clássica que lembra a da imagem */
-        margin: 50px auto;
-      }
-      .contador-titulo {
-        font-size: 13px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #666;
-        margin-bottom: 25px;
-      }
-      .contador-wrapper {
-        display: flex;
-        justify-content: center;
-        gap: 15px; /* Espaço entre as caixinhas */
-        flex-wrap: wrap;
-      }
-      .contador-bloco {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .contador-numero {
-        /* O linear-gradient cria aquela linha sutil no meio do número */
-        background: linear-gradient(to bottom, #f9f9f9 49%, #e0e0e0 50%, #f9f9f9 51%);
-        border: 1px solid #eaeaea;
-        border-radius: 4px;
-        padding: 15px 10px;
-        min-width: 65px;
-        font-size: 34px;
-        color: #333;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-        margin-bottom: 10px;
-      }
-      .contador-legenda {
-        font-size: 10px;
-        letter-spacing: 1px;
-        color: #888;
-        text-transform: uppercase;
-      }
-    </style>
-
-    <!-- Estrutura do Contador -->
-    <div class="contador-container">
-      <div class="contador-titulo">Contagem Regressiva para o Grande Dia</div>
-      
-      <div class="contador-wrapper">
-        <div class="contador-bloco">
-          <div class="contador-numero" id="dias">00</div>
-          <div class="contador-legenda">Dias</div>
-        </div>
-        
-        <div class="contador-bloco">
-          <div class="contador-numero" id="horas">00</div>
-          <div class="contador-legenda">Horas</div>
-        </div>
-        
-        <div class="contador-bloco">
-          <div class="contador-numero" id="minutos">00</div>
-          <div class="contador-legenda">Minutos</div>
-        </div>
-        
-        <div class="contador-bloco">
-          <div class="contador-numero" id="segundos">00</div>
-          <div class="contador-legenda">Segundos</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Script que faz a contagem funcionar -->
-    <script>
-      // Data e hora do evento: 28 de Novembro de 2026 às 16:30
-      var dataDoCasamento = new Date("Nov 28, 2026 16:30:00").getTime();
-
-      var intervalo = setInterval(function() {
-        var agora = new Date().getTime();
-        var distancia = dataDoCasamento - agora;
-
-        // Se o momento chegar, crava tudo em zero e para a contagem
-        if (distancia < 0) {
-          clearInterval(intervalo);
-          document.getElementById("dias").innerHTML = "00";
-          document.getElementById("horas").innerHTML = "00";
-          document.getElementById("minutos").innerHTML = "00";
-          document.getElementById("segundos").innerHTML = "00";
-          return; // Impede que o restante do código rode
-        }
-
-        // Cálculos de tempo
-        var dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-        var horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-        var segundos = Math.floor((distancia % (1000 * 60)) / 1000);
-
-        // Atualiza os números na tela (colocando o zero à esquerda quando necessário)
-        document.getElementById("dias").innerHTML = dias;
-        document.getElementById("horas").innerHTML = horas < 10 ? "0" + horas : horas;
-        document.getElementById("minutos").innerHTML = minutos < 10 ? "0" + minutos : minutos;
-        document.getElementById("segundos").innerHTML = segundos < 10 ? "0" + segundos : segundos;
-        
-      }, 1000);
-    </script>
 
     <div style="text-align: center; margin-top: 40px;">
       <button class="btn-primary" onclick="showView('gifts')" style="max-width: 350px; background: var(--accent);">
@@ -830,26 +724,23 @@
     // Dados dos Presentes
     const gifts = [
       { id: 1, title: "Se eu não comprar nada,<br>o desconto é maior", price: 1, img: "img/presentes/julius.jpg" },
-      { id: 2, title: "1 mês de Geoguessr<br>pro noivo", price: 10, img: "img/presentes/geoguessr.jpg" },
-      { id: 3, title: "Bilhetes de ônibus pra<br>passear no Ibirapuera", price: 11, img: "img/presentes/busao.jpg" },
-      { id: 4, title: "Coxinha da Padaria Real", price: 15, img: "img/presentes/coxinha.jpg" },
-      { id: 5, title: "2 Ingressos pro jogo<br>da Portuguesa", price: 30, img: "img/presentes/tristeza.jpg" },
-      { id: 6, title: "Regador de elefantinho pras plantinhas da casa", price: 40, img: "img/presentes/regador.jpg" },
-      { id: 7, title: "1 ano de corte de cabelo<br>e barba pro noivo", price: 45, img: "img/presentes/corte.jpg" },
-      { id: 8, title: "Travesseiro pra dormir<br>no aeroporto", price: 50, img: "img/presentes/travesseiro.jpg" },
-      { id: 9, title: "Papete da noiva", price: 55, img: "img/presentes/papete.jpg" },
-      { id: 10, title: "Filme para usar a<br>Instax em viagens", price: 60, img: "img/presentes/instax.jpg" },
-      { id: 11, title: "Tapete de Yoga pra noiva", price: 70, img: "img/presentes/tapeteyoga.jpg" },
-      { id: 12, title: "Camisa da Lusa pra noiva", price: 75, img: "img/presentes/camisalusa.jpg" },
-      { id: 13, title: "Fone anti-ruído pra não ouvir o barulho do noivo", price: 80, img: "img/presentes/fone.jpg" },
-      { id: 14, title: "Expansão de Ticket to Ride", price: 85, img: "img/presentes/tickettoride.jpg" },
-      { id: 15, title: "Cota pra geladeira nova que não congele tudo", price: 90, img: "img/presentes/geladeira.jpg" },
-      { id: 16, title: "Aula de potinho pra noiva", price: 100, img: "img/presentes/potinho.png" },
-      { id: 17, title: "Spa pra quando o casal brigar por causa da louça", price: 115, img: "img/presentes/spa.jpg" },
-      { id: 18, title: "Cota pro casal comprar uma lava-louça", price: 120, img: "img/presentes/lavalouca.jpg" },
-      { id: 19, title: "Ingresso das<br>Paralimpíadas 2028", price: 125, img: "img/presentes/la28.png" },
-      { id: 20, title: "1 noite de Airbnb na próxima viagem", price: 130, img: "img/presentes/airbnb.jpg" },
-      { id: 21, title: "Viagem Completa<br>Oceania 2032", price: 50000, img: "img/presentes/oceania.jpg" }
+      { id: 3, title: "Pipoquinha", price: 5, img: "img/presentes/pipoca.jpg" },
+      { id: 4, title: "1 mês de Geoguessr<br>pro noivo", price: 10, img: "img/presentes/geoguessr.jpg" },
+      { id: 5, title: "Bilhetes de ônibus<br>pra passiá no Ibirapuera", price: 11, img: "img/presentes/busao.jpg" },
+      { id: 6, title: "Coxinha da Padaria Real", price: 15, img: "img/presentes/coxinha.jpg" },
+      { id: 7, title: "2 Ingressos pro jogo<br>da Portuguesa", price: 30, img: "img/presentes/tristeza.jpg" },
+      { id: 8, title: "Fone anti-ruído pra não ouvir o barulho do noivo", price: 35, img: "img/presentes/fone.jpg" },
+      { id: 9, title: "1 ano de corte de cabelo<br>e barba pro noivo", price: 40, img: "img/presentes/corte.jpg" },
+      { id: 10, title: "Travesseiro pra dormir no aeroporto", price: 45, img: "img/presentes/travesseiro.jpg" },
+      { id: 11, title: "Papete da noiva", price: 50, img: "img/presentes/papete.jpg" },
+      { id: 12, title: "Filme para usar a<br>Instax em viagens", price: 60, img: "img/presentes/instax.jpg" },
+      { id: 13, title: "Aula de potinho pra Julia", price: 65, img: "img/presentes/potinho.png" },
+      { id: 15, title: "Tapete de Yoga pra noiva", price: 70, img: "img/presentes/tapeteyoga.jpg" },
+      { id: 16, title: "Camisa da Lusa pra noiva", price: 80, img: "img/presentes/camisalusa.jpg" },
+      { id: 17, title: "Expansão de Ticket to Ride", price: 90, img: "img/presentes/tickettoride.jpg" },
+      { id: 18, title: "Ingresso das Paralimpíadas 2028", price: 110, img: "img/presentes/la28.png" },
+      { id: 19, title: "1 noite de Airbnb na próxima viagem", price: 130, img: "img/presentes/airbnb.jpg" },
+      { id: 20, title: "Viagem Completa<br>Oceania 2032", price: 50000, img: "img/presentes/oceania.jpg" }
     ];
 
     // Carrinho refatorado para objeto (id do presente -> quantidade)
