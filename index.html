@@ -643,17 +643,10 @@
         font-family: "Georgia", serif; /* Fonte clássica que lembra a da imagem */
         margin: 50px auto;
       }
-      .contador-titulo {
-        font-size: 13px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #666;
-        margin-bottom: 25px;
-      }
       .contador-wrapper {
         display: flex;
         justify-content: center;
-        gap: 15px; /* Espaço entre as caixinhas */
+        gap: 25px; /* Aumentamos o espaço entre os blocos */
         flex-wrap: wrap;
       }
       .contador-bloco {
@@ -662,29 +655,29 @@
         align-items: center;
       }
       .contador-numero {
-        /* O linear-gradient cria aquela linha sutil no meio do número */
         background: linear-gradient(to bottom, #f9f9f9 49%, #e0e0e0 50%, #f9f9f9 51%);
         border: 1px solid #eaeaea;
-        border-radius: 4px;
-        padding: 15px 10px;
-        min-width: 65px;
-        font-size: 34px;
+        border-radius: 6px;
+        padding: 20px 15px; /* Caixas mais altas e largas */
+        min-width: 90px;    /* Largura mínima maior */
+        font-size: 52px;    /* Fonte do número bem maior */
         color: #333;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-        margin-bottom: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Sombra levemente mais destacada */
+        margin-bottom: 15px;
       }
       .contador-legenda {
-        font-size: 10px;
-        letter-spacing: 1px;
+        font-size: 14px;    /* Legenda maior */
+        letter-spacing: 2px;
         color: #888;
         text-transform: uppercase;
+        font-weight: 600;   /* Deixa a fonte da legenda um pouco mais forte para acompanhar o tamanho */
       }
     </style>
 
     <!-- Estrutura do Contador -->
     <div class="contador-container">
-      <div class="contador-titulo">Contagem Regressiva para o Grande Dia</div>
-      
+      <h2 class="section-title">Contagem Regressiva</h2>
+
       <div class="contador-wrapper">
         <div class="contador-bloco">
           <div class="contador-numero" id="dias">00</div>
