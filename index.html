@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rafael & Julia</title>
   <link rel="icon" type="image/png" href="img/icone.png">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #7A6855;
-      --secondary-color: #A39171;
-      --bg-light: #FAFAFA;
-      --card-bg: #FFFFFF;
-      --text-dark: #333333;
-      --text-muted: #666666;
-      --accent: #8C2D19;
+      --primary-color: #445746; /* Verde botânico escuro e profundo para os títulos */
+      --secondary-color: #637565; /* Verde musgo médio (usado quando passa o mouse) */
+      --bg-light: #F9F7F3; /* Mantivemos o fundo creme para dar contraste com as cores escuras */
+      --card-bg: #FFFFFF; 
+      --text-dark: #1F2620; /* Verde floresta quase preto, excelente para leitura */
+      --text-muted: #565E56; /* Cinza esverdeado mais fechado para os textos secundários */
+      --accent: #bd8d86; /* Rosa velho escuro/fechado para os botões e links */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,8 +32,8 @@
     /* Layout da Página */
     .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
     .section { margin-bottom: 60px; text-align: center; }
-    .section-title { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
-
+    .section-title { font-family: 'Pinyon Script', cursive !important; font-size: 4rem; color: var(--primary-color); margin-bottom: 20px; text-transform: none !important; letter-spacing: normal !important; font-weight: normal; }
+    
     /* Carrossel de Fotos */
     .carousel-container { position: relative; width: 100%; margin: 20px 0; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }    
     .carousel-slides { display: flex; transition: transform 0.5s ease-in-out; }/* Atualize esta linha existente adicionando o position: relative; */
@@ -170,6 +170,41 @@
 
     .dress-code-item strong {
       color: var(--primary-color);
+    }
+
+    /* Títulos com Flores Laterais */
+    .title-with-flowers {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px; /* Espaçamento entre as flores e o texto */
+      margin-bottom: 20px; /* Mantém a mesma margem original dos títulos */
+    }
+
+    /* Remove a margem de baixo especificamente dentro desse bloco para ficar alinhado */
+    .title-with-flowers .section-title {
+      margin-bottom: 0 !important; 
+    }
+
+    .flower-side {
+      width: 70px; /* Tamanho da florzinha. Ajuste conforme achar melhor */
+      height: auto;
+      mix-blend-mode: multiply; /* Remove o fundo branco */
+      opacity: 0.9;
+    }
+
+    .flower-right {
+      transform: scaleX(-1); /* É este comando que espelha a flor do lado direito */
+    }
+
+    /* Ajuste para não espremer o título no celular (telas menores que 768px) */
+    @media (max-width: 768px) {
+      .flower-side {
+        width: 45px; /* Diminui a florzinha no celular */
+      }
+      .title-with-flowers {
+        gap: 8px; /* Diminui o espaço no celular */
+      }
     }
 
     /* Ajuste específico do mobile para o Infográfico */
@@ -313,7 +348,12 @@
 
   <header>
     <div class="nav-container">
-      <a href="#" class="brand" onclick="showView('home', true)">R & J</a>
+      <a href="#" class="brand" onclick="showView('home', true)" style="position: relative; display: inline-flex; align-items: center; justify-content: center; font-family: 'Pinyon Script', cursive; font-size: 2.2rem; font-weight: normal;">
+        <!-- Flor aumentada atrás do texto -->
+        <img src="img/flowers/flower2.png" alt="" style="position: absolute; width: 65px; opacity: 0.3; z-index: -1; mix-blend-mode: multiply;">
+        <!-- Letras mais juntas sem o espaço físico do teclado, e o & na fonte Alex Brush -->
+        R<span style="font-family: 'Alex Brush', cursive; margin: 0 4px;">&</span>J
+      </a>
       <nav>
         <a onclick="showView('home', true)" style="color: var(--accent); font-weight: 600;">Home</a>
         
@@ -322,6 +362,7 @@
         <a onclick="showView('home'); scrollToSection('festa')">A Festa</a>
         <a onclick="showView('home'); scrollToSection('vestimenta')">Vestimenta</a>
         <a onclick="showView('home'); scrollToSection('rsvp')">RSVP</a>
+        <a onclick="showView('home'); scrollToSection('musicas')">Músicas</a>
         <a id="navPresentesLink" onclick="showView('gifts')" style="color: var(--accent); font-weight: 600;">Presentes</a>
         <div id="navCart" class="hidden" style="position: relative; margin-left: 20px;">
           <button onclick="toggleCartDropdown(event)" style="background:none; border:none; font-size: 1.2rem; cursor:pointer; font-weight: bold; padding: 5px;">
@@ -347,13 +388,17 @@
     
   <section class="section" style="margin-bottom: 20px;">
       <img src="img/header.jpg" alt="Capa" style="width: 100vw; height: 100vh; object-fit: cover; position: relative; left: 50%; transform: translateX(-50%); margin-top: -40px; margin-bottom: 30px; display: block;">
-      
-      <h1 class="section-title" style="margin-bottom: 10px;">Rafael & Julia</h1>
+      <h1 class="section-title" style="margin-bottom: 10px;">Rafael <span style="font-family: 'Alex Brush', cursive;">&</span> Julia</h1>
       <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0;">28 de Novembro de 2026 • São Paulo-SP</p>
     </section>
 
+
     <section id="casal" class="section">
-      <h2 class="section-title">O Casal</h2>
+      <div class="title-with-flowers">
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side">
+        <h2 class="section-title">O Casal</h2>
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side flower-right">
+      </div>
       <p style="max-width: 800px; margin: 0 auto 20px;"> 
         A vida é divertida e o destino é inexorável. Depois de tantos anos estudando contemporaneamente na Escola Politécnica sem se conhecer, esses dois se encontraram em Milão. E o resto é história. Já são mais de 5 anos juntos, inúmeras viagens, dezenas de jogos de tabuleiro, esportes praticados e algumas noites dormidas em aeroporto.<br>E agora resolvemos nos casar e convidamos você para estar presente e festejar conosco! 
       <div class="carousel-container">
@@ -477,7 +522,11 @@
     </section>
 
     <section id="local" class="section">
-      <h2 class="section-title">O Local</h2>
+      <div class="title-with-flowers">
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side">
+        <h2 class="section-title">O Local</h2>
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side flower-right">
+      </div>
       <img src="img/local.png" alt="Foto do Local" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; margin-top: 25px; display: block;">  
       <div class="info-card">
         <p><strong>Data:</strong> 28 de Novembro de 2026</p>
@@ -496,7 +545,11 @@
     </section>
 
     <section id="festa" class="section">
-      <h2 class="section-title">A Festa</h2>
+      <div class="title-with-flowers">
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side">
+        <h2 class="section-title">A Festa</h2>
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side flower-right">
+      </div>
       <div class="info-card">
         <p style="margin-bottom: 20px; text-align: center;">
           O evento vai ser bem tranquilo, sem cerimônias, focado em curtir com vocês!! A festa será estilo coquetel, sem lugares marcados ou mesa de jantar tradicional. A ideia é circular, curtir música boa e aproveitar os drinks e as pizzas servidas à vontade!
@@ -521,7 +574,11 @@
     </section>
 
     <section id="vestimenta" class="section">
-      <h2 class="section-title">Vestimenta</h2>
+      <div class="title-with-flowers">
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side">
+        <h2 class="section-title">Vestimenta</h2>
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side flower-right">
+      </div>
       <div class="info-card" style="text-align: center;">
         <p style="margin-bottom: 10px;">
           Queremos que todos estejam confortáveis para nos divertirmos juntos. Então no fim do dia, vá vestido como preferir! De qualquer forma, abaixo temos algumas sugestões do que idealizamos.
@@ -584,8 +641,13 @@
         </div>
       </div>
     </section>
+
     <section id="rsvp" class="section">
-      <h2 class="section-title">Confirme sua Presença</h2>
+      <div class="title-with-flowers">
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side">
+        <h2 class="section-title">Confirme sua Presença</h2>
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side flower-right">
+      </div>
       <div class="info-card">
         <form id="rsvpForm" onsubmit="submitRSVP(event)">
           
@@ -636,6 +698,31 @@
       </div>
     </section>
 
+    <!-- Nova seção de Músicas -->
+    <section id="musicas" class="section">
+      <div class="title-with-flowers">
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side">
+        <h2 class="section-title">Sugira suas músicas</h2>
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side flower-right">
+      </div>
+      <div class="info-card" style="text-align: center;">
+        <p style="margin-bottom: 20px;">
+          Como a gente não vai ter DJ, aceitamos dicas pra playlist perfeita! Sugira as músicas que não podem faltar na pista de dança, e elas provavelmente serão tocadas (após triagem dos noivos)!!
+        </p>
+        <form id="musicForm" onsubmit="submitMusic(event)">
+          <div class="form-group" style="text-align: left;">
+            <label for="musicGuestName">Nome Completo:</label>
+            <input type="text" id="musicGuestName" required placeholder="Insira seu nome aqui">
+          </div>
+          <div class="form-group" style="text-align: left;">
+            <label for="musicSuggestion">Música(s) e Artista(s):</label>
+            <textarea id="musicSuggestion" required rows="4" placeholder="Insira quantas músicas quiser (ex: Evidências - Chitãozinho & Xororó)"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="margin-top: 10px;">Enviar Sugestão</button>
+        </form>
+      </div>
+    </section>
+    
     <!-- Estilos do Contador (Design) -->
     <style>
       .contador-container {
@@ -672,11 +759,30 @@
         text-transform: uppercase;
         font-weight: 600;   /* Deixa a fonte da legenda um pouco mais forte para acompanhar o tamanho */
       }
+      /* Divisor Floral com Imagem */
+      .divisor-floral {
+        text-align: center;
+        margin: 30px auto; /* Dá um respiro entre as seções */
+        width: 100%;
+        max-width: 250px; /* Altere este valor se quiser a flor maior ou menor */
+      }
+
+      .divisor-floral img {
+        width: 100%;
+        height: auto;
+        display: block;
+        mix-blend-mode: multiply; /* A mágica que remove o fundo branco do JPEG */
+        opacity: 0.9; /* Deixa as cores da aquarela levemente mais suaves */
+    }
     </style>
 
     <!-- Estrutura do Contador -->
     <div class="contador-container">
-      <h2 class="section-title">Contagem Regressiva</h2>
+      <div class="title-with-flowers">
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side">
+        <h2 class="section-title">Contagem Regressiva</h2>
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side flower-right">
+      </div>
 
       <div class="contador-wrapper">
         <div class="contador-bloco">
@@ -744,7 +850,11 @@
 
   <div id="view-gifts" class="container hidden">
     <section class="section">
-      <h1 class="section-title">Lista de Presentes</h1>
+      <div class="title-with-flowers">
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side">
+        <h2 class="section-title">Lista de Presentes</h2>
+        <img src="img/flowers/flower3.png" alt="Flor" class="flower-side flower-right">
+      </div>
       <p style="margin-bottom: 10px;">A sua presença na festa é o presente de verdade, então não precisa nos dar nada 😝 Mas se quiser muito nos enviar algum presente, adicione ao carrinho os itens que achar mais legais e ficaremos muito gratos pelo seu carinho!</p>
       
       <!-- Nova linha adicionada aqui -->
@@ -764,6 +874,15 @@
       <p id="rsvpModalMsg" style="margin-bottom: 20px;">Obrigado por confirmar sua presença. Mal podemos esperar para comemorar com você!</p>
       <button class="btn-primary" onclick="closeModal('rsvpModal')">Fechar</button>
       <button class="btn-primary" onclick="closeModal('rsvpModal'); showView('gifts');" style="margin-top: 10px; background: var(--accent);">Ver Lista de Presentes</button>
+    </div>
+  </div>
+
+  <div id="musicModal" class="modal-overlay">
+    <div class="modal-content">
+      <h2 style="color: var(--primary-color); margin-bottom: 15px;">Sugestão Enviada!</h2>
+      <p id="musicModalMsg" style="margin-bottom: 20px;">Obrigado por ajudar na nossa playlist. Nos vemos na pista de dança!</p>
+      <button class="btn-primary" onclick="closeModal('musicModal')">Fechar</button>
+      <button class="btn-primary" onclick="closeModal('musicModal'); showView('gifts');" style="margin-top: 10px; background: var(--accent);">Ver Lista de Presentes</button>
     </div>
   </div>
 
@@ -830,7 +949,7 @@
       { id: 5, title: "2 Ingressos pro jogo<br>da Portuguesa", price: 30, img: "img/presentes/tristeza.jpg" },
       { id: 6, title: "Regador de elefantinho pras plantinhas da casa", price: 40, img: "img/presentes/regador.jpg" },
       { id: 7, title: "1 ano de corte de cabelo<br>e barba pro noivo", price: 45, img: "img/presentes/corte.jpg" },
-      { id: 8, title: "Travesseiro pra dormir<br>no aeroporto", price: 50, img: "img/presentes/travesseiro.jpg" },
+      { id: 8, title: "Travesseiro pra dormir<br>em aeroportos", price: 50, img: "img/presentes/travesseiro.jpg" },
       { id: 9, title: "Papete da noiva", price: 55, img: "img/presentes/papete.jpg" },
       { id: 10, title: "Filme para usar a<br>Instax em viagens", price: 60, img: "img/presentes/instax.jpg" },
       { id: 11, title: "Tapete de Yoga pra noiva", price: 70, img: "img/presentes/tapeteyoga.jpg" },
@@ -1045,6 +1164,35 @@
       document.getElementById('rsvpForm').reset();
       partnerFields.classList.add('hidden');
     }
+    
+    // Submeter Sugestão de Música
+    function submitMusic(e) {
+      e.preventDefault(); // Evita que a página recarregue ao enviar o form
+
+      const payload = {
+        action: 'save_music',
+        nome: document.getElementById('musicGuestName').value,
+        musica: document.getElementById('musicSuggestion').value
+      };
+
+      // Envia os dados para o Google Apps Script
+      if (APPS_SCRIPT_URL !== "SEU_URL_DO_APPS_SCRIPT_AQUI") {
+        fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8' 
+          },
+          body: JSON.stringify(payload)
+        }).catch(err => console.error("Erro ao enviar música:", err));
+      }
+
+      // Personaliza a mensagem e mostra o modal de sucesso que já existe no HTML
+      document.getElementById('musicModalMsg').innerText = `Obrigado, ${payload.nome}! Sua sugestão foi enviada para os noivos.`;
+      document.getElementById('musicModal').style.display = 'flex';
+      
+      // Limpa os campos do formulário
+      document.getElementById('musicForm').reset();
+    }
 
     // ---------- LÓGICA DO CARRINHO ---------- //
 
@@ -1241,14 +1389,25 @@
     }
 
     // Carregar Lista de Convidados da Planilha ao Abrir a Página
+    // Carregar Lista de Convidados da Planilha ao Abrir a Página
     window.onload = function() {
       const urlParams = new URLSearchParams(window.location.search);
       const guestId = urlParams.get('id');
+      
+      const rsvpInput = document.getElementById('rsvpName');
+      const musicInput = document.getElementById('musicGuestName');
+
+      // Sincroniza automaticamente o que for digitado no RSVP com o campo de música
+      if (rsvpInput && musicInput) {
+        rsvpInput.addEventListener('input', function() {
+          musicInput.value = this.value;
+        });
+      }
 
       // Se houver um ID na URL e a URL do Apps Script estiver configurada
       if (guestId && APPS_SCRIPT_URL !== "SEU_URL_DO_APPS_SCRIPT_AQUI") {
-        const rsvpInput = document.getElementById('rsvpName');
         rsvpInput.placeholder = "Carregando seu nome...";
+        if(musicInput) musicInput.placeholder = "Carregando seu nome...";
 
         fetch(APPS_SCRIPT_URL, {
           method: 'POST',
@@ -1263,8 +1422,9 @@
         .then(res => res.json())
         .then(data => {
           if (data.status === 'success' && data.nome) {
+            // Puxa o MESMO NOME da planilha para os dois campos
             rsvpInput.value = data.nome;
-            // rsvpInput.readOnly = true; // Descomente para bloquear edição do nome do convidado principal
+            if(musicInput) musicInput.value = data.nome; 
             
             const partnerConfirmation = document.getElementById('partnerConfirmation');
             const partnerConfirmationLabel = document.getElementById('partnerConfirmationLabel');
@@ -1272,28 +1432,24 @@
             
             // Verifica se tem acompanhante na base de dados
             if (data.acompanhante && data.acompanhante.trim() !== "") {
-              // Exibe a pergunta customizada
               partnerConfirmation.classList.remove('hidden');
               partnerConfirmationLabel.innerText = `O(a) acompanhante ${data.acompanhante} irá com você?`;
-              
-              // Garante que o campo de input venha vazio como solicitado
               partnerNameInput.value = ""; 
-
-              // Garante que o valor precisa ser preenchido
               document.querySelectorAll('input[name="partnerAttending"]').forEach(radio => radio.required = true);
             } else {
               partnerConfirmation.classList.add('hidden');
-
-              // Remove obrigatoriedade de preenchimento
               document.querySelectorAll('input[name="partnerAttending"]').forEach(radio => radio.required = false);
             }
           } else {
-            rsvpInput.placeholder = "Digite seu nome completo";
+            // Mantém o mesmo placeholder original do HTML
+            rsvpInput.placeholder = "Insira seu nome aqui";
+            if(musicInput) musicInput.placeholder = "Insira seu nome aqui";
           }
         })
         .catch(err => {
           console.error("Erro ao buscar convidado pelo ID:", err);
-          rsvpInput.placeholder = "Digite seu nome completo";
+          rsvpInput.placeholder = "Insira seu nome aqui";
+          if(musicInput) musicInput.placeholder = "Insira seu nome aqui";
         });
       }
     };
