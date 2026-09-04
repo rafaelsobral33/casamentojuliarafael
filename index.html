@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rafael & Julia</title>
   <link rel="icon" type="image/png" href="img/icone.png">
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Parisienne&family=Pinyon+Script&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary-color: #445746; /* Verde botânico escuro e profundo para os títulos */
@@ -32,7 +32,8 @@
     /* Layout da Página */
     .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
     .section { margin-bottom: 60px; text-align: center; }
-    .section-title { font-family: 'Pinyon Script', cursive !important; font-size: 4rem; color: var(--primary-color); margin-bottom: 20px; text-transform: none !important; letter-spacing: normal !important; font-weight: normal; }
+    .section-title { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+    /*.section-title { font-family: 'Pinyon Script', cursive !important; font-size: 4rem; color: var(--primary-color); margin-bottom: 20px; text-transform: none !important; letter-spacing: normal !important; font-weight: normal; }*/
     
     /* Carrossel de Fotos */
     .carousel-container { position: relative; width: 100%; margin: 20px 0; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }    
@@ -242,7 +243,7 @@
         padding-top: 115px; 
       }
 
-/* Ajusta o cabeçalho: logo na esquerda, menu na direita */
+    /* Ajusta o cabeçalho: logo na esquerda, menu na direita */
       .nav-container { 
         flex-direction: row; 
         align-items: center;
@@ -257,25 +258,26 @@
       /* Menu em grade (Grid): 4 colunas e 2 linhas para os 8 botões */
       nav { 
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* Cria exatamente 4 colunas iguais */
-        row-gap: 8px; /* Espaço entre a linha de cima e a de baixo */
-        column-gap: 3px; /* Espaço bem pequeno entre as colunas para caber tudo */
-        flex: 1; /* Ocupa todo o espaço restante */
-        margin-left: 15px; /* Margem menor para liberar espaço para as 4 colunas */
+        grid-template-columns: repeat(4, auto); 
+        justify-content: start; /* Agrupa os itens e elimina a distância exagerada */
+        column-gap: 8px; /* Pequeno espaçamento horizontal controlado entre as colunas */
+        row-gap: 2px; 
+        flex: 1; 
+        margin-left: 25px; /* Aumenta o espaço livre entre a logo R & J e o menu */
         padding: 0; 
       }
       
-      /* Fonte elástica ajustada para telas apertadas */
+      /* Fonte maior e elástica aproveitando o espaço livre */
       nav a { 
         margin-left: 0; 
-        font-size: clamp(8px, 2.2vw, 11px); /* Fonte um pouco menor para caber na horizontal */
+        font-size: clamp(10px, 3vw, 13px); /* Aumentamos a fonte já que os itens estão mais juntos */
         white-space: nowrap; 
-        text-align: center; /* Em 4 colunas, centralizar o texto fica mais bonito */
+        text-align: left;
       }
       
       #navCart {
         margin-left: 0 !important;
-        text-align: center;
+        text-align: left;
       }
 
       /* Diminui um pouco o tamanho dos títulos para caber na tela */
@@ -379,7 +381,7 @@
         <!-- Flor aumentada atrás do texto -->
         <img src="img/flowers/flower2.png" alt="" style="position: absolute; width: 65px; opacity: 0.8; z-index: -1; mix-blend-mode: multiply;">
         <!-- Letras mais juntas sem o espaço físico do teclado, e o & na fonte Alex Brush -->
-        R<span style="font-family: 'Alex Brush', cursive; margin: 0 4px;">&</span>J
+        R<span style="font-family: 'Parisienne', cursive; margin: 0 4px;">&</span>J
       </a>
       <nav>
         <a onclick="showView('home', true)" style="color: var(--accent); font-weight: 600;">Home</a>
@@ -410,12 +412,12 @@
       </nav>
     </div>
   </header>
-
-  <div id="view-home" class="container">
-    
-  <section class="section" style="margin-bottom: 20px;">
+  
+  
+  <div id="view-home" style="padding: 0;" class="container">
+    <section class="section" style="margin-top: 0; margin-bottom: 20px;">
       <img src="img/header.jpg" alt="Capa" style="width: 100vw; height: 100vh; object-fit: cover; position: relative; left: 50%; transform: translateX(-50%); margin-top: -40px; margin-bottom: 30px; display: block;">
-      <h1 class="section-title" style="margin-bottom: 10px;">Rafael <span style="font-family: 'Alex Brush', cursive;">&</span> Julia</h1>
+      <h1 class="section-title" style="margin-bottom: 10px;">Rafael <span style="font-family: 'Parisienne', cursive;">&</span> Julia</h1>
       <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0;">28 de Novembro de 2026 • São Paulo-SP</p>
     </section>
 
