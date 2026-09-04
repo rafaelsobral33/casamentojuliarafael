@@ -246,30 +246,29 @@
       .nav-container { 
         flex-direction: row; 
         align-items: center;
-        justify-content: space-between;
         padding: 10px 15px; 
       }
 
-      /* Garante que a logo não seja "esmagada" pela falta de espaço */
+      /* Garante que a logo tenha seu próprio espaço e não seja esmagada */
       .brand {
         flex-shrink: 0;
       }
       
-      /* Transforma o menu em uma grade de 2 colunas */
+      /* Menu em grade (Grid): 2 colunas que formam 4 linhas com os 8 botões */
       nav { 
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Duas colunas de tamanhos iguais */
-        column-gap: 15px; /* Espaço entre as colunas */
-        row-gap: 8px; /* Espaço entre as linhas */
-        width: 100%;
-        margin-left: 20px; /* Afasta o menu da logo */
+        grid-template-columns: 1fr 1fr; /* 2 colunas de tamanhos iguais */
+        row-gap: 8px; /* Espaço entre as linhas (cima/baixo) */
+        column-gap: 5px; /* Espaço entre as colunas (esquerda/direita) */
+        flex: 1; /* Ocupa todo o espaço restante da tela */
+        margin-left: 35px; /* Aumenta bastante o espaço vazio entre a logo e os textos */
         padding: 0; 
       }
       
-      /* Aumentamos bastante a fonte e alinhamos à esquerda */
+      /* Fonte elástica que se adapta para caber no espaço sem quebrar */
       nav a { 
         margin-left: 0; 
-        font-size: 13px !important; /* Fonte bem maior e muito mais legível */
+        font-size: clamp(9px, 2.8vw, 13px); /* Volta a ser elástico: cresce e diminui com a tela */
         white-space: nowrap; 
         text-align: left;
       }
