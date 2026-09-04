@@ -242,32 +242,41 @@
         padding-top: 115px; 
       }
 
-      /* Ajusta o cabeçalho para colocar a logo em cima e os links embaixo */
+      /* Ajusta o cabeçalho: logo na esquerda, menu na direita */
       .nav-container { 
-        flex-direction: column; 
-        gap: 10px; 
-        padding: 12px 5px; 
+        flex-direction: row; 
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px; 
+      }
+
+      /* Garante que a logo não seja "esmagada" pela falta de espaço */
+      .brand {
+        flex-shrink: 0;
       }
       
-      /* Menu flexível que se adapta à largura */
+      /* Transforma o menu em uma grade de 2 colunas */
       nav { 
-        flex-wrap: nowrap; 
-        justify-content: space-between; /* Espalha os botões usando todo o espaço disponível */
-        gap: 0; /* Removemos o espaçamento fixo para evitar que ele empurre os itens para fora */
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Duas colunas de tamanhos iguais */
+        column-gap: 15px; /* Espaço entre as colunas */
+        row-gap: 8px; /* Espaço entre as linhas */
         width: 100%;
-        padding: 0 5px; /* Uma pequena margem nas laterais para não grudar na borda do celular */
+        margin-left: 20px; /* Afasta o menu da logo */
+        padding: 0; 
       }
       
-      /* Links com tamanho de fonte variável */
+      /* Aumentamos bastante a fonte e alinhamos à esquerda */
       nav a { 
         margin-left: 0; 
-        /* A mágica acontece aqui: a fonte diminui junto com a tela, mas nunca fica menor que 9px nem maior que 12px */
-        font-size: clamp(9px, 2.5vw, 12px); 
+        font-size: 13px !important; /* Fonte bem maior e muito mais legível */
         white-space: nowrap; 
+        text-align: left;
       }
       
       #navCart {
         margin-left: 0 !important;
+        text-align: left;
       }
 
       /* Diminui um pouco o tamanho dos títulos para caber na tela */
