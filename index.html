@@ -746,13 +746,13 @@
     <style>
       .contador-container {
         text-align: center;
-        font-family: "Georgia", serif; /* Fonte clássica que lembra a da imagem */
+        font-family: "Georgia", serif;
         margin: 50px auto;
       }
       .contador-wrapper {
         display: flex;
         justify-content: center;
-        gap: 25px; /* Aumentamos o espaço entre os blocos */
+        gap: 25px;
         flex-wrap: wrap;
       }
       .contador-bloco {
@@ -764,35 +764,52 @@
         background: linear-gradient(to bottom, #f9f9f9 49%, #e0e0e0 50%, #f9f9f9 51%);
         border: 1px solid #eaeaea;
         border-radius: 6px;
-        padding: 20px 15px; /* Caixas mais altas e largas */
-        min-width: 90px;    /* Largura mínima maior */
-        font-size: 52px;    /* Fonte do número bem maior */
+        padding: 20px 15px;
+        min-width: 90px;
+        font-size: 52px;
         color: #333;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Sombra levemente mais destacada */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         margin-bottom: 15px;
       }
       .contador-legenda {
-        font-size: 14px;    /* Legenda maior */
+        font-size: 14px;
         letter-spacing: 2px;
         color: #888;
         text-transform: uppercase;
-        font-weight: 600;   /* Deixa a fonte da legenda um pouco mais forte para acompanhar o tamanho */
+        font-weight: 600;
       }
-      /* Divisor Floral com Imagem */
       .divisor-floral {
         text-align: center;
-        margin: 30px auto; /* Dá um respiro entre as seções */
+        margin: 30px auto;
         width: 100%;
-        max-width: 250px; /* Altere este valor se quiser a flor maior ou menor */
+        max-width: 250px;
       }
-
       .divisor-floral img {
         width: 100%;
         height: auto;
         display: block;
-        mix-blend-mode: multiply; /* A mágica que remove o fundo branco do JPEG */
-        opacity: 0.9; /* Deixa as cores da aquarela levemente mais suaves */
-    }
+        mix-blend-mode: multiply;
+        opacity: 0.9;
+      }
+
+      /* AJUSTES EXCLUSIVOS PARA O CELULAR (Eles ficam aqui no final para ter prioridade) */
+      @media (max-width: 768px) {
+        .contador-wrapper {
+          gap: 8px !important;
+          flex-wrap: nowrap !important;
+          justify-content: space-evenly;
+        }
+        .contador-numero {
+          padding: 12px 5px !important;
+          min-width: 60px !important;
+          font-size: 32px !important;
+          margin-bottom: 8px !important;
+        }
+        .contador-legenda {
+          font-size: 9px !important;
+          letter-spacing: 1px !important;
+        }
+      }
     </style>
 
     <!-- Estrutura do Contador -->
