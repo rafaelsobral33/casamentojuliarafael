@@ -200,10 +200,10 @@
     /* Ajuste para não espremer o título no celular (telas menores que 768px) */
     @media (max-width: 768px) {
       .flower-side {
-        width: 45px; /* Diminui a florzinha no celular */
+        width: 40px; /* Diminui um pouco mais a florzinha para dar espaço ao texto */
       }
       .title-with-flowers {
-        gap: 8px; /* Diminui o espaço no celular */
+        gap: 5px; /* Diminui o espaço entre a flor e o texto */
       }
     }
 
@@ -350,7 +350,7 @@
     <div class="nav-container">
       <a href="#" class="brand" onclick="showView('home', true)" style="position: relative; display: inline-flex; align-items: center; justify-content: center; font-family: 'Pinyon Script', cursive; font-size: 2.2rem; font-weight: normal;">
         <!-- Flor aumentada atrás do texto -->
-        <img src="img/flowers/flower2.png" alt="" style="position: absolute; width: 65px; opacity: 0.3; z-index: -1; mix-blend-mode: multiply;">
+        <img src="img/flowers/flower2.png" alt="" style="position: absolute; width: 65px; opacity: 0.8; z-index: -1; mix-blend-mode: multiply;">
         <!-- Letras mais juntas sem o espaço físico do teclado, e o & na fonte Alex Brush -->
         R<span style="font-family: 'Alex Brush', cursive; margin: 0 4px;">&</span>J
       </a>
@@ -1164,7 +1164,7 @@
       document.getElementById('rsvpForm').reset();
       partnerFields.classList.add('hidden');
     }
-    
+
     // Submeter Sugestão de Música
     function submitMusic(e) {
       e.preventDefault(); // Evita que a página recarregue ao enviar o form
@@ -1388,7 +1388,6 @@
       document.getElementById(modalId).style.display = 'none';
     }
 
-    // Carregar Lista de Convidados da Planilha ao Abrir a Página
     // Carregar Lista de Convidados da Planilha ao Abrir a Página
     window.onload = function() {
       const urlParams = new URLSearchParams(window.location.search);
