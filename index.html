@@ -242,40 +242,40 @@
         padding-top: 115px; 
       }
 
-      /* Ajusta o cabeçalho: logo na esquerda, menu na direita */
+/* Ajusta o cabeçalho: logo na esquerda, menu na direita */
       .nav-container { 
         flex-direction: row; 
         align-items: center;
-        padding: 10px 15px; 
+        padding: 10px 5px; /* Reduzi um pouco as bordas para ganhar tela */
       }
 
-      /* Garante que a logo tenha seu próprio espaço e não seja esmagada */
+      /* Garante que a logo tenha seu próprio espaço */
       .brand {
         flex-shrink: 0;
       }
       
-      /* Menu em grade (Grid): 2 colunas que formam 4 linhas com os 8 botões */
+      /* Menu em grade (Grid): 4 colunas e 2 linhas para os 8 botões */
       nav { 
         display: grid;
-        grid-template-columns: 1fr 1fr; /* 2 colunas de tamanhos iguais */
-        row-gap: 8px; /* Espaço entre as linhas (cima/baixo) */
-        column-gap: 5px; /* Espaço entre as colunas (esquerda/direita) */
-        flex: 1; /* Ocupa todo o espaço restante da tela */
-        margin-left: 35px; /* Aumenta bastante o espaço vazio entre a logo e os textos */
+        grid-template-columns: repeat(4, 1fr); /* Cria exatamente 4 colunas iguais */
+        row-gap: 8px; /* Espaço entre a linha de cima e a de baixo */
+        column-gap: 3px; /* Espaço bem pequeno entre as colunas para caber tudo */
+        flex: 1; /* Ocupa todo o espaço restante */
+        margin-left: 15px; /* Margem menor para liberar espaço para as 4 colunas */
         padding: 0; 
       }
       
-      /* Fonte elástica que se adapta para caber no espaço sem quebrar */
+      /* Fonte elástica ajustada para telas apertadas */
       nav a { 
         margin-left: 0; 
-        font-size: clamp(9px, 2.8vw, 13px); /* Volta a ser elástico: cresce e diminui com a tela */
+        font-size: clamp(8px, 2.2vw, 11px); /* Fonte um pouco menor para caber na horizontal */
         white-space: nowrap; 
-        text-align: left;
+        text-align: center; /* Em 4 colunas, centralizar o texto fica mais bonito */
       }
       
       #navCart {
         margin-left: 0 !important;
-        text-align: left;
+        text-align: center;
       }
 
       /* Diminui um pouco o tamanho dos títulos para caber na tela */
