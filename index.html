@@ -20,7 +20,9 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden}
     h1, h2, h3, .brand { font-family: 'Cormorant Garamond', serif; }
-
+    /* Esconde a quebra de linha no computador para não estragar o menu principal */
+    .quebra-linha { display: none; }
+    
     /* Navegação */
     header { background: #fff; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 100; }
     .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
@@ -33,8 +35,16 @@
     .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
     .section { margin-bottom: 60px; text-align: center; }
     /*.section-title { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }*/
-    .section-title { font-family: 'Pinyon Script', cursive !important; font-size: 4rem; color: var(--primary-color); margin-bottom: 20px; text-transform: none !important; letter-spacing: normal !important; font-weight: normal; }
+    .section-title { font-family: 'Pinyon Script', cursive !important; font-size: clamp(2.5rem, 6vw, 4rem); color: var(--primary-color); margin-bottom: 20px; text-transform: none !important; letter-spacing: normal !important; font-weight: normal; }    
     
+    /* Ajuste para parágrafos soltos (fora dos info-cards) não colarem na borda */
+    .section-desc { 
+      max-width: 800px !important; 
+      margin: 0 auto 20px !important; 
+      padding: 0 20px !important; /* 8vw = 8% da tela. Vai criar uma borda bem visível! */
+      text-align: center !important;
+    }
+
     /* Carrossel de Fotos */
     .carousel-container { position: relative; width: 100%; margin: 20px 0; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }    
     .carousel-slides { display: flex; transition: transform 0.5s ease-in-out; }/* Atualize esta linha existente adicionando o position: relative; */
@@ -188,9 +198,9 @@
     }
 
     .flower-side {
-      width: 70px; /* Tamanho da florzinha. Ajuste conforme achar melhor */
+      width: clamp(45px, 6vw, 70px);
       height: auto;
-      mix-blend-mode: multiply; /* Remove o fundo branco */
+      mix-blend-mode: multiply; 
       opacity: 0.9;
     }
 
@@ -246,29 +256,40 @@
         margin-left: 10px; /* Empurra a logo 10px para a direita (afastando da borda esquerda) */
       }
       
-      /* Menu em grade (Grid): 4 colunas e 2 linhas para os 8 botões */
+      /* Menu com Flexbox para centralizar a linha de baixo */
       nav { 
-        display: grid;
-        grid-template-columns: repeat(4, auto); 
-        justify-content: space-evenly; /* Agrupa os itens e elimina a distância exagerada */
-        column-gap: 8px; /* Pequeno espaçamento horizontal controlado entre as colunas */
-        row-gap: 2px; 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 12px; /* Espaçamento: 6px vertical (linhas), 12px horizontal (colunas) */
         flex: 1; 
-        margin-left: 25px; /* Aumenta o espaço livre entre a logo R & J e o menu */
+        margin-left: 20px; 
         padding: 0; 
       }
       
       /* Fonte maior e elástica aproveitando o espaço livre */
       nav a { 
         margin-left: 0; 
-        font-size: clamp(10px, 3vw, 13px); /* Aumentamos a fonte já que os itens estão mais juntos */
+        font-size: clamp(10px, 3vw, 14px); /* Aumentamos a fonte já que os itens estão mais juntos */
         white-space: nowrap; 
         text-align: center;
       }
+
+      /* Ativa a barreira invisível apenas no celular */
+      .quebra-linha {
+        display: block !important;
+        flex-basis: 100%; /* Força tudo que vem depois a cair para a linha de baixo */
+        height: 0;
+        margin: 0;
+      }
       
+      /* Como o carrinho agora é o último elemento, precisamos garantir que ele 
+         também obedeça ao Flexbox para se alinhar corretamente na 2ª linha */
       #navCart {
-        margin-left: 0 !important;
-        text-align: center;
+         margin-left: 0 !important;
+         text-align: center;
+         display: flex; /* Garante que o ícone e a badge fiquem certinhos */
+         align-items: center;
       }
 
       /* Reduz os espaços laterais da página */
@@ -356,7 +377,7 @@
         font-size: 7px; /* Diminui a palavra (era 14px) */
         letter-spacing: 1px;
       }
-      
+
       /* Ajuste dos Títulos e Flores no mobile */
       .title-with-flowers {
         gap: 8px;
@@ -390,8 +411,9 @@
         <a onclick="showView('home', true)" style="color: var(--accent); font-weight: 600;">Home</a>
         
         <a onclick="showView('home'); scrollToSection('casal')">O Casal</a>
-        <a onclick="showView('home'); scrollToSection('festa')">A Festa</a>
+        <a onclick="showView('home'); scrollToSection('festa')">A Festa</a> 
         <a onclick="showView('home'); scrollToSection('vestimenta')">Vestimenta</a>
+        <div class="quebra-linha"></div>
         <a onclick="showView('home'); scrollToSection('rsvp')">RSVP</a>
         <a onclick="showView('home'); scrollToSection('musicas')">Músicas</a>
         <a id="navPresentesLink" onclick="showView('gifts')" style="color: var(--accent); font-weight: 600;">Presentes</a>
@@ -430,9 +452,11 @@
         <h2 class="section-title">O Casal</h2>
         <img src="img/flowers/flower3.png" alt="Flor" class="flower-side flower-right">
       </div>
-      <p style="max-width: 800px; margin: 0 auto 20px;"> 
+      <p class="section-desc">
         A vida é divertida e o destino é inexorável. Depois de tantos anos estudando contemporaneamente na Escola Politécnica sem se conhecer, esses dois se encontraram em Milão. E o resto é história. Já são mais de 5 anos juntos, inúmeras viagens, dezenas de jogos de tabuleiro, esportes praticados e algumas noites dormidas em aeroporto.<br>E agora resolvemos nos casar e convidamos você para estar presente e festejar conosco! 
+      </p>
       <div class="carousel-container">
+        <div class="carousel-container">
         <div class="carousel-slides" id="carouselSlides">
           <div class="carousel-slide">
             <img src="img/1.jpg" alt="Foto 1">
@@ -552,7 +576,7 @@
       </div>
     </section>
 
-    <section id="local" class="section">
+    <section id="festa" class="section">
       <div class="title-with-flowers">
         <img src="img/flowers/flower3.png" alt="Flor" class="flower-side">
         <h2 class="section-title">A Festa</h2>
@@ -911,10 +935,10 @@
         <h2 class="section-title">Lista de Presentes</h2>
         <img src="img/flowers/flower3.png" alt="Flor" class="flower-side flower-right">
       </div>
-      <p style="margin-bottom: 10px;">A sua presença na festa é o presente de verdade, então não precisa nos dar nada 😝 Mas se quiser muito nos enviar algum presente, adicione ao carrinho os itens que achar mais legais e ficaremos muito gratos pelo seu carinho!</p>
+      <p class="section-desc" style="margin-bottom: 10px;">A sua presença na festa é o presente de verdade, então não precisa nos dar nada 😝 Mas se quiser muito nos enviar algum presente, adicione ao carrinho os itens que achar mais legais e ficaremos muito gratos pelo seu carinho!</p>
       
       <!-- Nova linha adicionada aqui -->
-      <p style="margin-bottom: 30px; font-size: 0.9rem; color: var(--text-muted); font-style: italic;">
+      <p class="section-desc" style="margin-bottom: 30px; font-size: 0.9rem; color: var(--text-muted); font-style: italic;">
         Ps.: Os preços são figurativos, não representam o preço real dos itens.<br>
         Ps2.: Menos o corte de cabelo do noivo.
       </p>
