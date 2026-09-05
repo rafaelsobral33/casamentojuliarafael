@@ -384,20 +384,23 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 12px; /* Controla o espaço exato entre a flor e o texto */
         padding: 0 10px;
       }
 
       .flower-side {
-        width: 42px;
+        width: 40px;
         flex-shrink: 0;
       }
 
       .title-with-flowers .section-title { 
-        font-size: 2.6rem; 
+        font-size: 2.5rem; 
         line-height: 1.1; 
         text-align: center;
-        max-width: none !important; 
+        display: inline-block; /* Faz a caixa do título encolher para acompanhar o texto */
+        width: fit-content;   /* Garante que ocupa apenas o espaço real das palavras */
+        max-width: none !important;
+        margin-bottom: 0 !important;
       }
     }
   </style>
