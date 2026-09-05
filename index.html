@@ -253,17 +253,18 @@
       /* Garante que a logo tenha seu próprio espaço */
       .brand {
         flex-shrink: 0;
+        margin-left: 10px; /* Empurra a logo 10px para a direita (afastando da borda esquerda) */
       }
       
       /* Menu em grade (Grid): 4 colunas e 2 linhas para os 8 botões */
       nav { 
         display: grid;
         grid-template-columns: repeat(4, auto); 
-        justify-content: start; /* Agrupa os itens e elimina a distância exagerada */
+        justify-content: space-evenly; /* Agrupa os itens e elimina a distância exagerada */
         column-gap: 8px; /* Pequeno espaçamento horizontal controlado entre as colunas */
         row-gap: 2px; 
         flex: 1; 
-        margin-left: 35px; /* Aumenta o espaço livre entre a logo R & J e o menu */
+        margin-left: 25px; /* Aumenta o espaço livre entre a logo R & J e o menu */
         padding: 0; 
       }
       
@@ -381,7 +382,7 @@
         <!-- Flor aumentada atrás do texto -->
         <!-- <img src="img/flowers/flower2.png" alt="" style="position: absolute; width: 65px; opacity: 0.8; z-index: -1; mix-blend-mode: multiply;"> */-->
         <!-- Letras mais juntas sem o espaço físico do teclado, e o & na fonte Alex Brush -->
-        R<span style="font-family: 'Parisienne', cursive; font-size: 0.9em;">&</span>J
+        R<span style="font-family: 'Parisienne', cursive; font-size: 0.7em;">&</span>J
       </a>
       <nav>
         <a onclick="showView('home', true)" style="color: var(--accent); font-weight: 600;">Home</a>
@@ -417,7 +418,7 @@
   <div id="view-home" style="padding: 0;" class="container">
     <section class="section" style="margin-top: 0; margin-bottom: 20px;">
       <img src="img/header.jpg" alt="Capa" style="width: 100vw; height: 100vh; object-fit: cover; position: relative; left: 50%; transform: translateX(-50%); margin-top: -40px; margin-bottom: 30px; display: block;">
-      <h1 class="section-title" style="margin-bottom: 10px;">Rafael <span style="font-family: 'Parisienne', cursive; font-size: 0.9em;">&</span> Julia</h1>
+      <h1 class="section-title" style="margin-bottom: 10px;">Rafael <span style="font-family: 'Parisienne', cursive; font-size: 0.7em;">&</span> Julia</h1>
       <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0;">28 de Novembro de 2026 • São Paulo-SP</p>
     </section>
 
