@@ -261,7 +261,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 6px 12px; /* Espaçamento: 6px vertical (linhas), 12px horizontal (colunas) */
+        gap: 2px 12px; /* Espaçamento: 6px vertical (linhas), 12px horizontal (colunas) */
         flex: 1; 
         margin-left: 20px; 
         padding: 0; 
@@ -270,7 +270,9 @@
       /* Fonte maior e elástica aproveitando o espaço livre */
       nav a { 
         margin-left: 0; 
-        font-size: clamp(10px, 3vw, 14px); /* Aumentamos a fonte já que os itens estão mais juntos */
+        margin-bottom: 0; /* Remove a margem extra para colar mais */
+        margin-left: 0; 
+        font-size: clamp(10px, 5vw, 14px); /* Aumentamos a fonte já que os itens estão mais juntos */
         white-space: nowrap; 
         text-align: center;
       }
@@ -378,21 +380,24 @@
         letter-spacing: 1px;
       }
 
-      /* Ajuste dos Títulos e Flores no mobile */
       .title-with-flowers {
-        gap: 8px;
-        align-items: center; /* Garante que a flor fique centralizada na altura das duas linhas */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 10px;
       }
 
       .flower-side {
-        width: 45px; /* Pode deixar um pouco maior já que o título cresceu */
-        flex-shrink: 0; /* Impede que o texto esprema e deforme as flores */
+        width: 42px;
+        flex-shrink: 0;
       }
 
       .title-with-flowers .section-title { 
-        font-size: 2.8rem; /* Título maior com mais destaque */
-        line-height: 1.1; /* Tira o buraco em branco entre a linha de cima e a de baixo */
-        max-width: 60vw; /* O SEGREDO: Limita o texto a 60% da tela, forçando a quebra e puxando as flores */
+        font-size: 2.6rem; 
+        line-height: 1.1; 
+        text-align: center;
+        max-width: none !important; 
       }
     }
   </style>
