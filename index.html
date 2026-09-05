@@ -198,16 +198,6 @@
       transform: scaleX(-1); /* É este comando que espelha a flor do lado direito */
     }
 
-    /* Ajuste para não espremer o título no celular (telas menores que 768px) */
-    @media (max-width: 768px) {
-      .flower-side {
-        width: 40px; /* Diminui um pouco mais a florzinha para dar espaço ao texto */
-      }
-      .title-with-flowers {
-        gap: 5px; /* Diminui o espaço entre a flor e o texto */
-      }
-    }
-
     /* Ajuste específico do mobile para o Infográfico */
     @media (max-width: 768px) {
       .dress-code-container {
@@ -279,11 +269,6 @@
       #navCart {
         margin-left: 0 !important;
         text-align: center;
-      }
-
-      /* Diminui um pouco o tamanho dos títulos para caber na tela */
-      .section-title { 
-        font-size: 2rem; 
       }
 
       /* Reduz os espaços laterais da página */
@@ -371,6 +356,23 @@
         font-size: 7px; /* Diminui a palavra (era 14px) */
         letter-spacing: 1px;
       }
+      
+      /* Ajuste dos Títulos e Flores no mobile */
+      .title-with-flowers {
+        gap: 8px;
+        align-items: center; /* Garante que a flor fique centralizada na altura das duas linhas */
+      }
+
+      .flower-side {
+        width: 45px; /* Pode deixar um pouco maior já que o título cresceu */
+        flex-shrink: 0; /* Impede que o texto esprema e deforme as flores */
+      }
+
+      .title-with-flowers .section-title { 
+        font-size: 2.8rem; /* Título maior com mais destaque */
+        line-height: 1.1; /* Tira o buraco em branco entre a linha de cima e a de baixo */
+        max-width: 60vw; /* O SEGREDO: Limita o texto a 60% da tela, forçando a quebra e puxando as flores */
+      }
     }
   </style>
 </head>
@@ -382,13 +384,12 @@
         <!-- Flor aumentada atrás do texto -->
         <!-- <img src="img/flowers/flower2.png" alt="" style="position: absolute; width: 65px; opacity: 0.8; z-index: -1; mix-blend-mode: multiply;"> */-->
         <!-- Letras mais juntas sem o espaço físico do teclado, e o & na fonte Alex Brush -->
-        R<span style="font-family: 'Parisienne', cursive; font-size: 0.7em;">&</span>J
+        R<span style="font-family: 'Parisienne', cursive; font-size: 0.6em; margin-left: 2px; margin-right: -2px;">&</span>J
       </a>
       <nav>
         <a onclick="showView('home', true)" style="color: var(--accent); font-weight: 600;">Home</a>
         
         <a onclick="showView('home'); scrollToSection('casal')">O Casal</a>
-        <a onclick="showView('home'); scrollToSection('local')">O Local</a>
         <a onclick="showView('home'); scrollToSection('festa')">A Festa</a>
         <a onclick="showView('home'); scrollToSection('vestimenta')">Vestimenta</a>
         <a onclick="showView('home'); scrollToSection('rsvp')">RSVP</a>
@@ -554,18 +555,23 @@
     <section id="local" class="section">
       <div class="title-with-flowers">
         <img src="img/flowers/flower3.png" alt="Flor" class="flower-side">
-        <h2 class="section-title">O Local</h2>
+        <h2 class="section-title">A Festa</h2>
         <img src="img/flowers/flower3.png" alt="Flor" class="flower-side flower-right">
       </div>
       <img src="img/local.png" alt="Foto do Local" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; margin-top: 25px; display: block;">  
       <div class="info-card">
         <p><strong>Data:</strong> 28 de Novembro de 2026</p>
+        <p><strong>Horário:</strong> 16h30 às 22h</p>
         <p><strong>Local:</strong> Andar43 - Praça Pedro Lessa 110 - São Paulo-SP</p>
         <p><strong>Entrada:</strong> Na entrada do prédio, é necessário apresentar documentação para identificação dos convidados.</p>
         <p style="margin-top: 10px;">
           <a href="https://www.google.com/maps/place/Andar43+-+espa%C3%A7o+de+evento/data=!4m2!3m1!1s0x0:0xa02644edadaeb63d?sa=X&ved=1t:2428&ictx=111" target="_blank" style="color: var(--primary-color); text-decoration: underline;">Ver no Google Maps</a>
         </p>
         
+        <h4 style="margin-top: 20px; color: var(--primary-color);">O Evento</h4>
+        <ul class="rules-list">
+          A festa vai ser bem tranquila, sem cerimônias, focado em curtir com vocês!! Ela será estilo coquetel, sem lugares marcados ou mesa de jantar tradicional. A ideia é circular, curtir música boa e aproveitar os drinks e as pizzas servidas à vontade!
+        </ul>
         <h4 style="margin-top: 20px; color: var(--primary-color);">Como Chegar</h4>
         <ul class="rules-list">
           <li>• <strong>Estacionamento:</strong> Há um estacionamento privado aberto 24h na rua Brigadeiro Tobias 120, colado ao prédio.</li>
@@ -574,6 +580,7 @@
       </div>
     </section>
 
+    <!--
     <section id="festa" class="section">
       <div class="title-with-flowers">
         <img src="img/flowers/flower3.png" alt="Flor" class="flower-side">
@@ -590,18 +597,20 @@
           <li>• <strong>16h30:</strong> Início da festa</li>
           <li>• <strong>16h31:</strong> Início da comida</li>
           <li>• <strong>17h00:</strong> Abertura do bar</li>
-          <li>• <strong>18h38:</strong> Pôr do sol</li>
+          <li>• <stron>g>18h38:</strong> Pôr do sol</li>
           <li>• <strong>22h00:</strong> Fim de festa</li>
         </ul>
-
+        -->
         <!-- Bloco dos Fornecedores adicionado aqui -->
         <!--<p style="margin-top: 25px; font-size: 0.95rem; text-align: center; background: #f9f9f9; padding: 15px; border-radius: 8px;">
           <span class="fornecedor-item">🍹 <strong>Drinks por:</strong> <a href="https://www.instagram.com/chapadrinksp/" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">@chapadrinksp</a></span>
           <span class="fornecedor-separador">&nbsp;&nbsp;|&nbsp;&nbsp;</span> 
           <span class="fornecedor-item">🍕 <strong>Pizzas por:</strong> <a href="https://instagram.com/divinaincrenca" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">@divinaincrenca</a></span>
         </p>-->
+      <!--
       </div>
     </section>
+    -->
 
     <section id="vestimenta" class="section">
       <div class="title-with-flowers">
