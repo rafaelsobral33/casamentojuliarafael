@@ -20,8 +20,8 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden}
     h1, h2, h3, .brand { font-family: 'Cormorant Garamond', serif; }
-    /* Esconde a quebra de linha no computador para não estragar o menu principal */
-    .quebra-linha { display: none; }
+    /* No computador, ignora a separação e coloca todos os itens na mesma linha */
+    .nav-row { display: contents; }
     
     /* Navegação */
     header { background: #fff; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 100; }
@@ -256,33 +256,33 @@
         margin-left: 10px; /* Empurra a logo 10px para a direita (afastando da borda esquerda) */
       }
       
-      /* Menu com Flexbox para centralizar a linha de baixo */
+      /* Configura o menu para ter formato de coluna (Linha 1 em cima, Linha 2 embaixo) */
       nav { 
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         justify-content: center;
-        gap: 2px 8px; /* Espaçamento: 6px vertical (linhas), 12px horizontal (colunas) */
+        gap: 6px; /* Espaço vertical entre as duas linhas */
         flex: 1; 
-        margin-left: 20px; 
+        margin-left: 10px; 
         padding: 0; 
       }
       
-      /* Fonte maior e elástica aproveitando o espaço livre */
+      /* A caixa blindada: obriga os itens a ficarem um do lado do outro */
+      .nav-row {
+        display: flex;
+        flex-wrap: nowrap !important; /* A MÁGICA: É totalmente proibido jogar itens para a linha de baixo */
+        justify-content: center;
+        align-items: center;
+        gap: 10px; /* Espaçamento horizontal entre os botões */
+        width: 100%;
+      }
+      
+      /* A fonte agora se ajusta automaticamente para caber sem espremer demais */
       nav a { 
-        margin-left: 0; 
-        margin-bottom: 0; /* Remove a margem extra para colar mais */
-        margin-left: 0; 
-        font-size: clamp(6px, 4vw, 16px); /* Aumentamos a fonte já que os itens estão mais juntos */
+        margin: 0 !important; 
+        font-size: clamp(8px, 3.2vw, 16px); 
         white-space: nowrap; 
         text-align: center;
-      }
-
-      /* Ativa a barreira invisível apenas no celular */
-      .quebra-linha {
-        display: block !important;
-        flex-basis: 100%; /* Força tudo que vem depois a cair para a linha de baixo */
-        height: 0;
-        margin: 0;
       }
       
       /* Como o carrinho agora é o último elemento, precisamos garantir que ele 
@@ -413,29 +413,34 @@
         R<span style="font-family: 'Parisienne', cursive; font-size: 0.6em; margin-left: 2px; margin-right: -2px;">&</span>J
       </a>
       <nav>
-        <a onclick="showView('home', true)" style="color: var(--accent); font-weight: 600;">Home</a>
+        <!-- LINHA 1: 4 Primeiros itens -->
+        <div class="nav-row">
+          <a onclick="showView('home', true)" style="color: var(--accent); font-weight: 600;">Home</a>
+          <a onclick="showView('home'); scrollToSection('casal')">O Casal</a>
+          <a onclick="showView('home'); scrollToSection('festa')">A Festa</a> 
+          <a onclick="showView('home'); scrollToSection('vestimenta')">Vestimenta</a>
+        </div>
         
-        <a onclick="showView('home'); scrollToSection('casal')">O Casal</a>
-        <a onclick="showView('home'); scrollToSection('festa')">A Festa</a> 
-        <a onclick="showView('home'); scrollToSection('vestimenta')">Vestimenta</a>
-        <div class="quebra-linha"></div>
-        <a onclick="showView('home'); scrollToSection('rsvp')">RSVP</a>
-        <a onclick="showView('home'); scrollToSection('musicas')">Músicas</a>
-        <a id="navPresentesLink" onclick="showView('gifts')" style="color: var(--accent); font-weight: 600;">Presentes</a>
-        <div id="navCart" class="hidden" style="position: relative; margin-left: 20px;">
-          <button onclick="toggleCartDropdown(event)" style="background:none; border:none; font-size: 1.2rem; cursor:pointer; font-weight: bold; padding: 5px;">
-            🛒 <span id="cartBadge" style="background: var(--accent); color: white; border-radius: 50%; padding: 2px 8px; font-size: 0.8rem; position: relative; top: -2px;">0</span>
-          </button>
+        <!-- LINHA 2: 3 Últimos itens (Carrinho entra no lugar de presentes) -->
+        <div class="nav-row">
+          <a onclick="showView('home'); scrollToSection('rsvp')">RSVP</a>
+          <a onclick="showView('home'); scrollToSection('musicas')">Músicas</a>
+          <a id="navPresentesLink" onclick="showView('gifts')" style="color: var(--accent); font-weight: 600;">Presentes</a>
           
-          <div id="cartDropdown" class="hidden" style="position: absolute; right: 0; top: 120%; background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.15); width: 300px; padding: 15px; border-radius: 8px; z-index: 200; border: 1px solid #eaeaea;">
-            <h4 style="margin-bottom: 15px; color: var(--primary-color);">Seu Carrinho</h4>
-            <div id="dropdownCartList" style="max-height: 250px; overflow-y: auto; margin-bottom: 10px;">
+          <div id="navCart" class="hidden" style="position: relative; margin-left: 20px;">
+            <button onclick="toggleCartDropdown(event)" style="background:none; border:none; font-size: 1.2rem; cursor:pointer; font-weight: bold; padding: 5px;">
+              🛒 <span id="cartBadge" style="background: var(--accent); color: white; border-radius: 50%; padding: 2px 8px; font-size: 0.8rem; position: relative; top: -2px;">0</span>
+            </button>
+            
+            <div id="cartDropdown" class="hidden" style="position: absolute; right: 0; top: 120%; background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.15); width: 300px; padding: 15px; border-radius: 8px; z-index: 200; border: 1px solid #eaeaea;">
+              <h4 style="margin-bottom: 15px; color: var(--primary-color);">Seu Carrinho</h4>
+              <div id="dropdownCartList" style="max-height: 250px; overflow-y: auto; margin-bottom: 10px;"></div>
+              <hr style="margin: 10px 0; border: 0; border-top: 1px dashed #ccc;">
+              <div style="font-weight: bold; margin-bottom: 15px; text-align: right; font-size: 1.1rem;">
+                Total: R$ <span id="dropdownTotal">0</span>,00
               </div>
-            <hr style="margin: 10px 0; border: 0; border-top: 1px dashed #ccc;">
-            <div style="font-weight: bold; margin-bottom: 15px; text-align: right; font-size: 1.1rem;">
-              Total: R$ <span id="dropdownTotal">0</span>,00
+              <button class="btn-primary" onclick="openCheckoutModal()" style="padding: 12px; font-size: 0.9rem;">Finalizar Presente</button>
             </div>
-            <button class="btn-primary" onclick="openCheckoutModal()" style="padding: 12px; font-size: 0.9rem;">Finalizar Presente</button>
           </div>
         </div>
       </nav>
