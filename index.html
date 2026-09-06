@@ -185,30 +185,31 @@
 
     /* Títulos com Flores Laterais */
     .title-with-flowers {
-      display: flex;
+      display: grid;
+      grid-template-columns: auto minmax(0, auto) auto;
       align-items: center;
       justify-content: center;
-      gap: 15px;
+      column-gap: 10px;
+      width: 100%;
       margin: 0 auto 20px;
-      width: fit-content;
-      max-width: 100%;
     }
 
     .title-with-flowers .section-title {
       margin-bottom: 0 !important;
-      flex: 0 1 auto;
       min-width: 0;
-      max-width: calc(100% - 120px);
+      width: auto;
+      max-width: calc(100vw - 104px);
       text-align: center;
     }
 
     .flower-side {
-      width: clamp(45px, 6vw, 70px);
+      width: 42px;
       height: auto;
-      flex: 0 0 auto;
+      justify-self: center;
       mix-blend-mode: multiply;
       opacity: 0.9;
     }
+
     .flower-right {
       transform: scaleX(-1); /* É este comando que espelha a flor do lado direito */
     }
@@ -386,29 +387,27 @@
       }
 
       .title-with-flowers {
-        display: flex;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
         align-items: center;
         justify-content: center;
-        gap: 10px;
-        width: fit-content;
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
+        column-gap: 10px;
+        width: 100%;
         padding: 0;
       }
 
       .flower-side {
         width: 42px;
-        flex: 0 0 auto;
+        flex-shrink: 0;
       }
 
-      .title-with-flowers .section-title { 
-        font-size: 2.6rem; 
-        line-height: 1.1; 
-        text-align: center;
-        flex: 0 1 auto;
+      .title-with-flowers .section-title {
         min-width: 0;
         max-width: calc(100vw - 104px) !important;
+        width: auto;
+        font-size: 2.6rem;
+        line-height: 1.1;
+        text-align: center;
       }
     }
   </style>
