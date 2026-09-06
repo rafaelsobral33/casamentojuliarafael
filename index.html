@@ -390,61 +390,23 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 6px;
         width: 100%;
-        padding: 0;
+        padding: 0 5px;
       }
 
       .flower-side {
-        width: 38px;
-        height: auto;
-        flex: 0 0 38px;
+        width: clamp(28px, 9vw, 42px);
+        flex: 0 0 auto;
       }
 
-      /* Regra geral */
       .title-with-flowers .section-title {
+        margin: 0 !important;
         white-space: nowrap !important;
-        line-height: 1 !important;
         text-align: center;
-        margin-bottom: 0 !important;
-        width: auto;
-        max-width: none !important;
+        line-height: 1 !important;
         flex: 0 1 auto;
-      }
-
-      /* O Casal */
-      #casal .title-with-flowers .section-title {
-        font-size: 2.6rem;
-      }
-
-      /* A Festa */
-      #festa .title-with-flowers .section-title {
-        font-size: 2.6rem;
-      }
-
-      /* Vestimenta */
-      #vestimenta .title-with-flowers .section-title {
-        font-size: 2.6rem;
-      }
-
-      /* Confirme sua Presença */
-      #rsvp .title-with-flowers .section-title {
-        font-size: 2.3rem;
-      }
-
-      /* Sugira suas músicas */
-      #musicas .title-with-flowers .section-title {
-        font-size: 2.3rem;
-      }
-
-      /* Contagem Regressiva */
-      .contador-container .title-with-flowers .section-title {
-        font-size: 2.3rem;
-      }
-
-      /* Lista de Presentes */
-      #view-gifts .title-with-flowers .section-title {
-        font-size: 2.3rem;
+        font-size: clamp(1.45rem, 8vw, 2.6rem) !important;
       }
     }
   </style>
