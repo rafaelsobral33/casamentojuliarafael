@@ -188,22 +188,27 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px; /* Espaçamento entre as flores e o texto */
-      margin-bottom: 20px; /* Mantém a mesma margem original dos títulos */
+      gap: 15px;
+      margin: 0 auto 20px;
+      width: fit-content;
+      max-width: 100%;
     }
 
-    /* Remove a margem de baixo especificamente dentro desse bloco para ficar alinhado */
     .title-with-flowers .section-title {
-      margin-bottom: 0 !important; 
+      margin-bottom: 0 !important;
+      flex: 0 1 auto;
+      min-width: 0;
+      max-width: calc(100% - 120px);
+      text-align: center;
     }
 
     .flower-side {
       width: clamp(45px, 6vw, 70px);
       height: auto;
-      mix-blend-mode: multiply; 
+      flex: 0 0 auto;
+      mix-blend-mode: multiply;
       opacity: 0.9;
     }
-
     .flower-right {
       transform: scaleX(-1); /* É este comando que espelha a flor do lado direito */
     }
@@ -385,19 +390,25 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        padding: 0 10px;
+        width: fit-content;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
       }
 
       .flower-side {
         width: 42px;
-        flex-shrink: 0;
+        flex: 0 0 auto;
       }
 
       .title-with-flowers .section-title { 
         font-size: 2.6rem; 
         line-height: 1.1; 
         text-align: center;
-        max-width: none !important; 
+        flex: 0 1 auto;
+        min-width: 0;
+        max-width: calc(100vw - 104px) !important;
       }
     }
   </style>
