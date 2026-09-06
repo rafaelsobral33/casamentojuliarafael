@@ -185,28 +185,22 @@
 
     /* Títulos com Flores Laterais */
     .title-with-flowers {
-      display: grid;
-      grid-template-columns: auto minmax(0, auto) auto;
+      display: flex;
       align-items: center;
       justify-content: center;
-      column-gap: 10px;
-      width: 100%;
-      margin: 0 auto 20px;
+      gap: 15px; /* Espaçamento entre as flores e o texto */
+      margin-bottom: 20px; /* Mantém a mesma margem original dos títulos */
     }
 
+    /* Remove a margem de baixo especificamente dentro desse bloco para ficar alinhado */
     .title-with-flowers .section-title {
-      margin-bottom: 0 !important;
-      min-width: 0;
-      width: auto;
-      max-width: calc(100vw - 104px);
-      text-align: center;
+      margin-bottom: 0 !important; 
     }
 
     .flower-side {
-      width: 42px;
+      width: clamp(45px, 6vw, 70px);
       height: auto;
-      justify-self: center;
-      mix-blend-mode: multiply;
+      mix-blend-mode: multiply; 
       opacity: 0.9;
     }
 
@@ -386,28 +380,71 @@
         letter-spacing: 1px;
       }
 
+      /* =========================================
+        TÍTULOS COM FLORES — MOBILE
+        Cada título tem seu próprio tamanho para
+        sempre caber em UMA única linha.
+        ========================================= */
+
       .title-with-flowers {
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr) auto;
+        display: flex;
         align-items: center;
         justify-content: center;
-        column-gap: 10px;
+        gap: 8px;
         width: 100%;
         padding: 0;
       }
 
       .flower-side {
-        width: 42px;
-        flex-shrink: 0;
+        width: 38px;
+        height: auto;
+        flex: 0 0 38px;
       }
 
+      /* Regra geral */
       .title-with-flowers .section-title {
-        min-width: 0;
-        max-width: calc(100vw - 104px) !important;
-        width: auto;
-        font-size: 2.6rem;
-        line-height: 1.1;
+        white-space: nowrap !important;
+        line-height: 1 !important;
         text-align: center;
+        margin-bottom: 0 !important;
+        width: auto;
+        max-width: none !important;
+        flex: 0 1 auto;
+      }
+
+      /* O Casal */
+      #casal .title-with-flowers .section-title {
+        font-size: 2.6rem;
+      }
+
+      /* A Festa */
+      #festa .title-with-flowers .section-title {
+        font-size: 2.6rem;
+      }
+
+      /* Vestimenta */
+      #vestimenta .title-with-flowers .section-title {
+        font-size: 2.6rem;
+      }
+
+      /* Confirme sua Presença */
+      #rsvp .title-with-flowers .section-title {
+        font-size: 1.75rem;
+      }
+
+      /* Sugira suas músicas */
+      #musicas .title-with-flowers .section-title {
+        font-size: 1.95rem;
+      }
+
+      /* Contagem Regressiva */
+      .contador-container .title-with-flowers .section-title {
+        font-size: 1.85rem;
+      }
+
+      /* Lista de Presentes */
+      #view-gifts .title-with-flowers .section-title {
+        font-size: 2.15rem;
       }
     }
   </style>
