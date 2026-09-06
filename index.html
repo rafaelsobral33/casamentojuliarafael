@@ -384,22 +384,24 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
-        padding: 0 10px;
+        gap: 0; /* Tiramos o gap para controlar a distância só com a margem negativa */
+        padding: 0 5px;
       }
 
       .flower-side {
-        width: 38px;
+        width: 42px; /* Mantém o tamanho original da flor no mobile */
         flex-shrink: 0;
+        margin: 0 -15px; /* O SEGREDO: Puxa as flores 15px para DENTRO da caixa de texto */
+        z-index: 0; 
       }
 
       .title-with-flowers .section-title { 
-        font-size: 2.4rem; 
-        line-height: 1.15; 
+        font-size: 2.6rem; /* MANTIDO SEU TAMANHO ORIGINAL */
+        line-height: 1.1; 
         text-align: center;
-        width: fit-content;
-        max-width: none !important;
-        margin-bottom: 0 !important;
+        max-width: none !important; 
+        z-index: 1; /* Garante que o texto fique por cima da flor se eles se encostarem */
+        text-wrap: balance; /* Faz a quebra de linha ficar simétrica (duas linhas de tamanho parecido) */
       }
     }
   </style>
