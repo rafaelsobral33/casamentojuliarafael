@@ -272,7 +272,7 @@
         margin-left: 0; 
         margin-bottom: 0; /* Remove a margem extra para colar mais */
         margin-left: 0; 
-        font-size: clamp(10px, 5vw, 14px); /* Aumentamos a fonte já que os itens estão mais juntos */
+        font-size: clamp(8px, 5vw, 14px); /* Aumentamos a fonte já que os itens estão mais juntos */
         white-space: nowrap; 
         text-align: center;
       }
@@ -384,24 +384,20 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0; /* Tiramos o gap para controlar a distância só com a margem negativa */
-        padding: 0 5px;
+        gap: 10px;
+        padding: 0 10px;
       }
 
       .flower-side {
-        width: 42px; /* Mantém o tamanho original da flor no mobile */
+        width: 42px;
         flex-shrink: 0;
-        margin: 0 -15px; /* O SEGREDO: Puxa as flores 15px para DENTRO da caixa de texto */
-        z-index: 0; 
       }
 
       .title-with-flowers .section-title { 
-        font-size: 2.6rem; /* MANTIDO SEU TAMANHO ORIGINAL */
+        font-size: 2.6rem; 
         line-height: 1.1; 
         text-align: center;
         max-width: none !important; 
-        z-index: 1; /* Garante que o texto fique por cima da flor se eles se encostarem */
-        text-wrap: balance; /* Faz a quebra de linha ficar simétrica (duas linhas de tamanho parecido) */
       }
     }
   </style>
